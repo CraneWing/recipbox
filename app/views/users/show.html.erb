@@ -1,0 +1,29 @@
+ <%= title('User Profile') %>
+ 
+ <div class="container">
+  <div class="row row-custom">
+      <h2>User Profile</h2>
+      <div class="col-md-6">
+         <p><strong>Username:</strong> <%= @user.username %></p>
+         <p><strong>Name:</strong> <%= @user.first_name %> <%= @user.last_name %></p>
+         <p><strong>Location:</strong> <%= @user.location %></p>
+         <p><strong>Recipes submitted</strong></p>
+         <ul>
+          <% @recipes.each do |recipe| %>
+            <li><%= link_to recipe.title, recipe_path(recipe) %>
+             <% if user_signed_in? %>
+               <%= link_to 'Edit Recipe', edit_recipe_path(recipe.id), class: 'btn btn-primary btn-sm' %>
+             <% end %>
+            </li>
+          <% end %>
+         </ul>
+         <% if user_signed_in? %>
+          <p><strong>Email:</strong> <%= @user.email %></p>
+          <p>This is how your public profile will be displayed. You can add or delete profile items on your <%= link_to 'edit profile page', edit_user_registration_path %>.</p>
+         <% end %>
+      </div>
+      <div class="col-md-6">
+         <%= image_tag @user.avatar.url(:thumb) %>
+      </div>
+  </div>
+ </div>

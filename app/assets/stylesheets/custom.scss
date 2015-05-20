@@ -1,0 +1,206 @@
+/** custom site fonts **/
+@font-face {
+    font-family: 'Cinnamoncake';
+    src: url('cinnammoncake/cinnamoncake.eot'); /* IE9 */
+    src: url('cinnammoncake/cinnamoncake.woff') format('woff'),
+         url('cinnammoncake/cinnamoncake.eot?#iefix') format('embedded-opentype'),
+         url('cinnammoncake/cinnamoncake.otf') format('otf'),
+         url('cinnammoncake/cinnamoncake.ttf') format('truetype'),
+         url('cinnammoncake/cinnamoncake.svg#cinnamoncake') format('svg');
+}
+
+@font-face {
+    font-family: 'kaushanscript';
+    src: font-url('kaushan/kaushanscript.eot'); /* IE9 */
+    src: font-url('kaushan/kaushanscript.woff') format('woff'),
+         font-url('kaushan/kaushanscript.eot?#iefix') format('embedded-opentype'),
+         font-url('kaushan/kaushanscript.otf') format('otf'),
+         font-url('kaushan/kaushanscript.ttf') format('truetype'),
+         font-url('kaushan/kaushanscript.svg#kaushanscript') format('svg');
+}
+
+/** general styling **/
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+  padding-top: 50px;
+  margin-bottom: 100px;
+  
+  h1, h2, h3, h4, h5 {
+    font-family: 'kaushanscript', sans-serif;
+  }
+  
+  p, a, ul {
+    font-family: 'Arimo', serif;
+  }
+  
+  .btn {
+    border-radius: 0;
+    border-color: #000;
+    color: #000;
+    
+    &:hover {
+        border-color: #000;
+    }
+  }
+  
+  .forms {
+    .form-control {
+        border-radius: 0 !important;
+        border-color: #000 !important;
+        &:focus {
+            box-shadow: 0 1px 1px rgb(105, 120, 234) inset, 0 0 8px rgb(105, 120, 234);
+        }
+    }
+  }
+  
+  .forms-row, .row-custom {
+    padding: 10px 15% 25px 15%;
+  }
+  
+  .jumbotron {
+    
+    height: 450px !important;
+    
+    .recipe {   
+        
+        background-color: #000;
+        opacity: 0.8;
+        height: 350px;
+        width: 350px;
+        margin: 15px auto 0 auto;
+        text-align: center;
+        border-radius: 50%;
+        
+        
+        h1 {
+            
+            color: #fff;
+            font-size: 4em;
+            letter-spacing: .1em;
+            padding: 85px 15px 15px 15px;
+            border-bottom: 3px solid #fff;
+            display: inline-block;
+        }
+        
+        p {
+            color: #fff;
+            font-size: 16px !important;
+        }
+    }
+  }
+  
+  /** navigation **/
+  .navbar {
+    background-color: #fff;
+    border-bottom: 1px solid #000;
+    box-shadow: 0 3px 5px rgba(100, 100, 100, 0.49);
+    
+    li {
+        vertical-align: baseline;
+        
+        a {
+        color: #000;
+        font-size: 16px;
+        font-family: 'kaushanscript', sans-serif;
+        }
+        
+        i {
+            font-size: 40px;
+            vertical-align: middle;
+        }
+    }
+  }
+  
+  /** footer **/
+  footer {
+    height: 100px;
+    background-color: #000;
+    color: #fff;
+    font-size: 11px;
+    font-family: 'Arimo', serif;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    
+    p {
+        font-size: 9px;
+    }
+    
+    ul {
+        list-style: none;
+        padding-top: 20px;
+    }
+    
+    a {
+        color: #fff;
+        text-decoration: none;
+        
+        &:hover {
+            text-decoration: none;
+            color: #999;
+        }
+    }
+    
+    #social {
+        margin-top: -85px !important;
+        text-align: right;
+        
+        ul {
+            display:  inline-block !important;
+            
+            li {
+                float: left !important;
+                
+                a i {
+                    font-size: 30px !important;
+                    padding: 0 6px;
+                
+                }
+            }
+        }
+    }
+  }
+  
+  /** static pages **/
+ 
+  .container-full {
+    width: 100%;
+    padding: 25px 0;
+    margin: 0 20px;
+  }
+  
+  #home-subhead {
+    .col-md-6 {
+        padding: 20px;
+    }
+  }
+  
+  #search {
+    text-align: center;
+    padding: 15px 0 25px 0;
+  }
+  
+  /** homepage **/
+    .food-col {
+        text-align: center;
+        h2 {
+            margin-top: 2px;
+            padding-bottom: 8px;
+        }
+    }
+  
+    .food-col-i {
+        font-size: 50px;
+        
+    }
+/** about page **/
+    #about {
+        padding: 0 10% 20px 10%;
+    }
+    
+} /** end body **/

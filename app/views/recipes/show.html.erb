@@ -1,0 +1,11 @@
+<% title(@recipe.title) %>
+
+<div class="container">
+  <div class="row row-custom">
+    <h2><%= @recipe.title %></h2>
+    
+    <strong><%= split_ingredients(@recipe.ingredients) %></strong>
+ 
+    <p><%= @recipe.steps %></p>
+    </div>  
+</div>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= google_webfonts_link_tag :arimo => [400, 700] %>
+  <%= csrf_meta_tags %>
+  
+  <style type="text/css">
+    .jumbotron {
+       background: url(<%= random_bg_image %>);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <%= link_to '<i class="icon-stockpot"></i> Home'.html_safe, root_path %>
+            </li>
+            <li>
+              <a href="#">
+                <i class="icon-cookbook"></i> Search
+              </a>
+            </li>
+            <li>
+              <%= link_to '<i class="icon-ladle"></i> About'.html_safe, pages_about_path %>
+            </li>
+            <li>
+              <a href="#">
+                <i class="icon-burger"></i> Forum
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="icon-fork"></i> Blog
+              </a>
+            </li>
+            <% if user_signed_in? %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                <i class="icon-pear"></i> Actions <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to 'View Profile', current_user %>
+                </li>
+                <li>
+                  <%= link_to 'Edit Profile', edit_user_registration_path %>
+                </li>
+                <li>
+                  <%= link_to 'Add Recipe', new_recipe_path %>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <%= link_to '<i class="icon-icecreamcone"></i> Logout'.html_safe, destroy_user_session_path, :method => :delete %>
+            </li>
+            <% else %>
+            <li>
+              <%= link_to '<i class="icon-pear"></i> Sign Up'.html_safe, new_user_registration_path %>
+            </li>
+            <li>
+              <%= link_to '<i class="icon-beverage"></i> Login'.html_safe, new_user_session_path %>
+            </li>
+            <% end %>
+          </ul>
+        </div><!-- navbar-collapse -->
+      </div>
+    </nav>
+
+    <div class="jumbotron">
+      <div class="container">
+        <div class="recipe">
+          <h1>RecipeBox</h1>
+          <p><em>The Gathering Place for Food</em></p>
+        </div>
+      </div>
+    </div> <!-- jumbotron -->
