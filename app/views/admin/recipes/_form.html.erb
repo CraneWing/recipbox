@@ -1,0 +1,22 @@
+  <%= simple_form_for(@recipe, html: { method: :post, class: 'forms', multipart: true } ) do |f| %>  
+      <div class="form-group">
+        <%= f.input :title, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.input :ingredients, class: 'form-control', required: true, placeholder: 'Separate each ingredient with a semicolon (;)', input_html: { :rows => 8 } %>
+      </div>
+      <div class="form-group">
+        <%= f.input :steps, class: 'form-control', required: true, input_html: { :rows => 8 } %>
+      </div>
+      <div class="form-group">
+        <%= f.label 'Add optional recipe image' %>
+        <%= f.file_field :recipe_img %>
+      </div>
+      <div class="form-group">
+        <%= f.collection_select(:categories, @categories, :id, :cat_name, { prompt: 'Select one or more categories' }, { multiple: true, class: 'form-control' } )  %>
+      </div>
+      
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      
+      <%= f.button :submit, "Add Recipe", class: 'btn btn-primary' %>
+  <% end %>

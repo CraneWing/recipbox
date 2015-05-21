@@ -2,10 +2,29 @@
 
 <div class="container">
   <div class="row row-custom">
-    <h2><%= @recipe.title %></h2>
+        <div id="recipe-info">
+          <div class="col-md-6">
+            <hr>
+            <h2><%= @recipe.title %></h2>
+            <p>Submitted by <%= link_to @user.username, user_path %></p>
+            
+            <% if @recipe.comments != nil %>
+              <p><%= @recipe.comments %></p>
+            <% end %>
+            <hr>
+            <strong><%= split_ingredients(@recipe.ingredients) %></strong>
+            
+            <br><br>
+            <p><%= @recipe.steps %></p>
+          </div> <!-- cold-md-6 recipe body --> 
+          <div class="col-md-6">
+            <% if @recipe.recipe_img != nil %>
+              <%= image_tag @recipe.recipe_img %>
+            <% end %>
+          </div> <!-- col-mid-6 image -->
+        </div>
+        <div class="clearfix"></div>
+          <p id="print-link"><%= link_to 'Print Recipe', '#', onclick: 'printPage()', class: 'btn btn-default btn-sm' %></p>
+     </div>
+  </div>
     
-    <strong><%= split_ingredients(@recipe.ingredients) %></strong>
- 
-    <p><%= @recipe.steps %></p>
-    </div>  
-</div>

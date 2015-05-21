@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   root 'pages#welcome'
 
   get 'pages/about' => 'pages#about'
+  get 'pages/search' => 'pages#search'
   
   # user devise routes
   get 'users/sign_up' => 'devise/registrations#new'
@@ -21,5 +22,6 @@ Rails.application.routes.draw do
   post 'recipes/create' => 'recipes#create'
   get 'recipes/:id/edit' => 'recipes#edit'
   get 'recipes/:id' => 'recipes#show'
+  post 'recipes/:id' => 'recipes#update'
 
 end

@@ -15,5 +15,4 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require fontsmoothie
-//= require jasny-bootstrap.min
 //= require_tree .

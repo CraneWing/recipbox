@@ -6,12 +6,6 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= google_webfonts_link_tag :arimo => [400, 700] %>
   <%= csrf_meta_tags %>
-  
-  <style type="text/css">
-    .jumbotron {
-       background: url(<%= random_bg_image %>);
-    }
-  </style>
 </head>
 <body>
   <nav class="navbar navbar-fixed-top">
@@ -30,10 +24,18 @@
             <li>
               <%= link_to '<i class="icon-stockpot"></i> Home'.html_safe, root_path %>
             </li>
-            <li>
-              <a href="#">
-                <i class="icon-cookbook"></i> Search
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                <i class="icon-cookbook"></i> Recipes <span class="caret"></span>
               </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">All Recipes</a>
+                </li>
+                <li>
+                  <%= link_to 'Search Recipes'.html_safe, pages_search_path %>
+                </li>
+              </ul>
             </li>
             <li>
               <%= link_to '<i class="icon-ladle"></i> About'.html_safe, pages_about_path %>

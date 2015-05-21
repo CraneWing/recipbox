@@ -7,23 +7,39 @@
          <p><strong>Username:</strong> <%= @user.username %></p>
          <p><strong>Name:</strong> <%= @user.first_name %> <%= @user.last_name %></p>
          <p><strong>Location:</strong> <%= @user.location %></p>
+         
+         <% if @user.profile != nil %>
+           <p><strong>About me: </strong> <%= @user.profile %></p>
+         <% end %>
          <p><strong>Recipes submitted</strong></p>
          <ul>
           <% @recipes.each do |recipe| %>
-            <li><%= link_to recipe.title, recipe_path(recipe) %>
+            <li>
+             
              <% if user_signed_in? %>
-               <%= link_to 'Edit Recipe', edit_recipe_path(recipe.id), class: 'btn btn-primary btn-sm' %>
+               <%= recipe.title %>
+               <%= link_to 'View', recipe_path(recipe), class: 'btn btn-primary btn-xs'  %>
+               <%= link_to 'Edit', edit_recipe_path, class: 'btn btn-success btn-xs' %>
+             <% else %>
+               <%= link_to recipe.title, recipe_path(recipe) %>
              <% end %>
-            </li>
-          <% end %>
+             </li>
          </ul>
+          <% end %>
          <% if user_signed_in? %>
-          <p><strong>Email:</strong> <%= @user.email %></p>
-          <p>This is how your public profile will be displayed. You can add or delete profile items on your <%= link_to 'edit profile page', edit_user_registration_path %>.</p>
+          <hr>
+          <p><strong>This is how your profile will be publicly displayed (less the recipe view or edit links, and "current avatar" label). You can also edit your profile, including changing or updating your password <%= link_to 'by going to edit page', edit_user_registration_path %>.</strong></p>
          <% end %>
       </div>
       <div class="col-md-6">
-         <%= image_tag @user.avatar.url(:thumb) %>
+       <% if @user.avatar != nil %>
+        <figure>
+           <%= image_tag @user.avatar.url(:thumb) %>
+            <% if user_signed_in? %>
+             <figcaption><strong>Current Avatar</strong></figcaption>
+            <% end %>
+        </figure>
+       <% end %>
       </div>
   </div>
  </div>

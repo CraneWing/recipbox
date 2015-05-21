@@ -12,3 +12,7 @@ Gems used in project include:
 * simple_form for efficient form creation
 * Carrierwave and rmagick for user uploads of personal avatars and recipe images
 * Devise for quick setup of user registation, login and logout
+
+Custom fonts are Kaushanscript from Font Squirrel for the headings and Arimo, a Google hosted font, for the text. Cooking icons came from flaticon.com and were designed by Agata Kuczminska. I converted them to a font with Font Squirrel's generator.
+
+Random images that appear in the jumbotron heading and recipe images are from All-free-download, morgueFile, and FreeImages.com.

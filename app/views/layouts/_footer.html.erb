@@ -18,5 +18,14 @@
         </div>
       </div> <!-- footer container -->
     </footer>
+    <script>
+      $(document).ready(function() {
+         $('a, li > a').on('click', function() {
+            var randomImgStyle = "<style> .jumbotron { background-image: url(<%= image_url 'site-img/food-image' + rand(37).to_s + '.jpg' %>); } </style>"
+                $('html > head').append(randomImgStyle);
+                $('.jumbotron').fadeIn(400);
+            });
+      });
+    </script>
   </body>
 </html>

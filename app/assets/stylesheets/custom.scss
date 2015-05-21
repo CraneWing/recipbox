@@ -38,6 +38,14 @@ body {
     font-family: 'Arimo', serif;
   }
   
+  hr {
+    color: #999;
+  }
+  
+  .clearfix {
+    clear: both;
+  }
+  
   .btn {
     border-radius: 0;
     border-color: #000;
@@ -201,6 +209,10 @@ body {
 /** about page **/
     #about {
         padding: 0 10% 20px 10%;
+    }
+/** recipe page **/
+    #print-link {
+        margin-top: 15px;
     }
     
 } /** end body **/

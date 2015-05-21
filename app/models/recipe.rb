@@ -3,4 +3,6 @@ class Recipe < ActiveRecord::Base
    has_many :categories
    
    validates_presence_of :title, :ingredients, :steps
+   
+   mount_uploader :recipe_img, ImageUploader
 end
