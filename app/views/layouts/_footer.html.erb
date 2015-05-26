@@ -18,6 +18,12 @@
         </div>
       </div> <!-- footer container -->
     </footer>
+       <%= javascript_tag do %>
+            $(function() {
+              $("time.timeago").timeago();
+            });
+       <% end %>
+            });
     <script>
       // generates random jumbotron background every time link clicked.
       // excludes main dropdown links.

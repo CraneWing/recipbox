@@ -13,7 +13,27 @@
    </div>
    <hr>
    <div class="row">
-    <h1>Recent Recipes Added</h1>
+      <div class="col-md-6">
+        <h1>Newest Recipes</h1>
+        <% @recipes.each do |recipe| %>
+          <p>
+            <%= image_tag recipe.recipe_img, class: 'microthumb' %> <%= link_to recipe.title, recipe_path(recipe) %> Added <%= timeago(recipe.created_at) %>
+          </p>
+        <% end %>
+      </div>
+      <div class="col-md-6">
+        <h1>Newest Members</h1>
+        <% @users.each do |user| %>
+          <p>
+          <% if user.avatar.blank? || user.avatar == 'avatar-default.jpg' %>
+            <%= image_tag "avatar-default.jpg", class: 'microthumb' %>
+          <% else %>
+            <%= image_tag user.avatar.url(:thumb), class: 'microthumb' %>
+          <% end %>
+          <%= link_to user.username, user_path(user) %> Joined <time class="timeago"><%= user.created_at %></time>
+          </p>
+        <% end %>
+      </div>
    </div>
 </div>
 <hr>

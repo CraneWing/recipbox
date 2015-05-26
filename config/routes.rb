@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admins, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :users, :controllers => {:registrations => 'registrations'}
   
   # user can see only profile page or page of all users

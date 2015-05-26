@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 gem 'mysql2'
 gem 'sass-rails', '~> 5.0'
@@ -14,6 +12,9 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # login, reg, authentication
 gem 'devise'
+
+# for admin - written this way to properly install with Rails 4
+gem 'activeadmin', github: 'activeadmin'
 
 # styling and formatting helper gems
 gem 'bootstrap-sass'
@@ -28,12 +29,11 @@ gem 'carrierwave'
 gem 'rmagick'
 
 # time helper gems - tzinfo-data for Win and local_time
-# to conver UTC to user's local timezone
+# to conver UTC to user's local timezone. 
 gem 'tzinfo-data'
 gem 'local_time'
 
 group :development, :test do
-
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
