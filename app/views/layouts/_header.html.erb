@@ -40,10 +40,18 @@
             <li>
               <%= link_to '<i class="icon-ladle"></i> About'.html_safe, pages_about_path %>
             </li>
-            <li>
-              <a href="#">
-                <i class="icon-burger"></i> Forum
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                <i class="icon-burger"></i> Community <span class="caret"></span>
               </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to 'All Users'.html_safe, users_path %>
+                </li>
+                <li>
+                  <a href="#">Forum</a>
+                </li>
+              </ul>
             </li>
             <li>
               <a href="#">
@@ -60,7 +68,10 @@
                   <%= link_to 'View Profile', current_user %>
                 </li>
                 <li>
-                  <%= link_to 'Edit Profile', edit_user_registration_path %>
+                  <%= link_to 'Edit Sign-In', edit_user_registration_path %>
+                </li>
+                <li>
+                  <%= link_to 'Edit Profile', edit_user_path(current_user) %>
                 </li>
                 <li>
                   <%= link_to 'Add Recipe', new_recipe_path %>

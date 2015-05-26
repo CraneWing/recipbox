@@ -13,15 +13,15 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @user = User.find_by_id(@recipe.user_id)
+    @categories = Category.all
   end
   
   def create
       @recipe = Recipe.new(recipe_params)
       
      if @recipe.save
-        serialize :categories, Array
         redirect_to current_user
-        flash[:success] = 'Recipe was successfully added'
+        flash[:success] = 'Recipe was successfully added amd will be available for view shortly'
      else
         render action: 'new'
      end
@@ -49,6 +49,6 @@ class RecipesController < ApplicationController
   
   private
     def recipe_params
-      params.require(:recipe).permit(:ingredients, :steps, :recipe_img, :comments, :categories, :user_id)
+      params.require(:recipe).permit(:title, :ingredients, :steps, :recipe_img, :comments, :categories, :user_id, :approved, :tags)
     end
 end

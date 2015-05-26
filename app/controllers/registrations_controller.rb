@@ -1,5 +1,14 @@
 # from hibbard.eu/ested-attributes-and-updating-without-a-password-in-devise
+# and platformatec (Devise creator)
 class RegistrationsController < Devise::RegistrationsController
+   before_filter :authenticate_user!, only: [:edit, :update, :create, :destroy]
+   
+   def new
+      build_resource({})
+      yield resource if block_given?
+      respond_with self.resource
+   end
+   
    def update
       account_update_params = devise_parameter_sanitizer.sanitize(:account_update)
       @user = User.find(current_user.id)
@@ -14,14 +23,14 @@ class RegistrationsController < Devise::RegistrationsController
       end
  
       if successfully_updated
-        set_flash_message :notice, :updated
-        sign_in @user, :bypass => true
-        redirect_to edit_user_registration_path
+         sign_in @user, :bypass => true
+         set_flash_message :notice, :updated
+         redirect_to current_user
       else
         render 'edit'
       end
    end
- 
+   
   private
  
   def needs_password?

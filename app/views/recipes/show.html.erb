@@ -15,11 +15,19 @@
             <strong><%= split_ingredients(@recipe.ingredients) %></strong>
             
             <br><br>
-            <p><%= @recipe.steps %></p>
+            <p><%= @recipe.steps.html_safe %></p>
+            <p><strong>Tagged: </strong></p>
+            <% get_recipe_tags(@recipe.tags) %>
+            
+            <% @tagged.each do |key, value| %>
+              &bull; <a href="<%= key %>"><%= value %></a>
+            <% end %>
+            
+            
           </div> <!-- cold-md-6 recipe body --> 
           <div class="col-md-6">
             <% if @recipe.recipe_img != nil %>
-              <%= image_tag @recipe.recipe_img %>
+              <%= image_tag @recipe.recipe_img.url(:medium) %>
             <% end %>
           </div> <!-- col-mid-6 image -->
         </div>

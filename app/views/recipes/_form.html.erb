@@ -1,7 +1,6 @@
  <%= simple_form_for(@recipe, html: { method: :post, class: 'forms', multipart: true } ) do |f| %>  
      
-        <%= f.input :title, class: 'form-control' %>
-    
+        <%= f.input :title, class: 'form-control', required: true %>
       
         <%= f.input :ingredients, class: 'form-control', required: true, placeholder: 'Separate each ingredient with a semicolon (;)', input_html: { :rows => 8 } %>
   

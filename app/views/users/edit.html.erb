@@ -1,0 +1,37 @@
+<%= title('Edit Youe Profile') %>
+
+<div class="container">
+  <div class="row forms-row">
+    <h2>Edit Your Profile</h2>
+    <%= simple_form_for(@user, html: { method: :put, class: 'forms', multipart: true }) do |f| %>
+      <%= f.error_notification %>
+      <div class="form-group">
+        <%= image_tag @user.avatar.url(:thumb) %><br>
+        <p>
+          <strong>Current Avatar</strong>
+        </p>
+        <p><strong>Change:</strong>
+        <br>
+        <%= f.file_field :avatar %></p>
+      </div>
+      <div class="form-group">
+        <%= f.input :username %>
+      </div>
+      <div class="form-group">
+        <%= f.input :first_name %>
+      </div>
+      <div class="form-group">
+        <%= f.input :last_name %>
+      </div>
+      <div class="form-group">
+        <%= f.input :location, placeholder: 'Enter city, state, province, country, etc.' %>
+      </div>
+      <div class="form-group">
+        <%= f.input :profile, placeholder: 'Tell us a little about yourself', input_html: { :rows => 8 } %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Update", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

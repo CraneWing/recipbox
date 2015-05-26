@@ -1,45 +1,47 @@
  <%= title('User Profile') %>
  
  <div class="container">
-  <div class="row row-custom">
-      <h2>User Profile</h2>
+  <div class="row row-custom profile">
       <div class="col-md-6">
-         <p><strong>Username:</strong> <%= @user.username %></p>
-         <p><strong>Name:</strong> <%= @user.first_name %> <%= @user.last_name %></p>
+        <h2>User Profile</h2>
+         <p><strong>Username:</strong>
+          <% if @user.username.blank? %>
+           Not specified
+          <% else %>
+           <%= @user.username %>
+          <% end %>
+           <br>Member since <%= local_time(@user.created_at, '%d %B %Y') %>
+         <p><strong>Name:</strong>
+          <% if @user.first_name.blank? && @user.last_name.blank? %>
+           No name given
+          <% else %>
+           <%= @user.first_name %> <%= @user.last_name %></p>
+          <% end %>
+         <% if !@user.location.blank? %>
          <p><strong>Location:</strong> <%= @user.location %></p>
+         <% end %>
          
-         <% if @user.profile != nil %>
+         <% if !@user.profile.blank? %>
            <p><strong>About me: </strong> <%= @user.profile %></p>
          <% end %>
          <p><strong>Recipes submitted</strong></p>
-         <ul>
-          <% @recipes.each do |recipe| %>
-            <li>
-             
-             <% if user_signed_in? %>
-               <%= recipe.title %>
-               <%= link_to 'View', recipe_path(recipe), class: 'btn btn-primary btn-xs'  %>
-               <%= link_to 'Edit', edit_recipe_path, class: 'btn btn-success btn-xs' %>
-             <% else %>
-               <%= link_to recipe.title, recipe_path(recipe) %>
-             <% end %>
-             </li>
-         </ul>
-          <% end %>
-         <% if user_signed_in? %>
-          <hr>
-          <p><strong>This is how your profile will be publicly displayed (less the recipe view or edit links, and "current avatar" label). You can also edit your profile, including changing or updating your password <%= link_to 'by going to edit page', edit_user_registration_path %>.</strong></p>
+        
+         <% if @recipes.blank? %>
+           <p>User has not submitted any recipes yet.</p>
+         <% else %>
+          <ul>
+           <% @recipes.each do |recipe| %>
+            <li><%= link_to recipe.title, recipe_path(recipe) %></li>
+           <% end %>
+          </ul>
          <% end %>
       </div>
       <div class="col-md-6">
-       <% if @user.avatar != nil %>
-        <figure>
-           <%= image_tag @user.avatar.url(:thumb) %>
-            <% if user_signed_in? %>
-             <figcaption><strong>Current Avatar</strong></figcaption>
-            <% end %>
-        </figure>
-       <% end %>
+        <% if @user.avatar.blank? || @user.avatar == 'avatar-default.jpg' %>
+          <%= image_tag "avatar-default.jpg" %>
+        <% else %>
+          <%= image_tag @user.avatar.url(:thumb) %>
+        <% end %>
       </div>
   </div>
  </div>

@@ -1,3 +1,57 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/** static pages **/
+ 
+  .container-full {
+    width: 100%;
+    padding: 25px 0;
+    margin: 0 20px;
+  }
+  
+  #home-subhead {
+    .col-md-6 {
+        padding: 20px;
+    }
+  }
+  
+/** about page **/
+    #about {
+        padding: 0 10% 20px 10%;
+    }
+  
+  /** homepage **/
+    .food-col {
+        text-align: center;
+        h2 {
+            margin-top: 2px;
+            padding-bottom: 8px;
+        }
+    }
+  
+    .food-col-i {
+        font-size: 50px;
+        
+    }
+    
+/** dynamic views **/
+
+    
+/* search page */
+    #second-row-cats {
+        padding-bottom: 25px;
+    }
+    
+    .search-head {
+        text-align: center;
+        padding: 15px 0 25px 0;
+    }
+    
+    .profile {
+        figure {
+            margin-top: 20px;
+            margin-left: -25px;
+            width: 155px;
+            height: 155px;
+        }
+    }

@@ -73,6 +73,11 @@ body {
   .jumbotron {
     
     height: 450px !important;
+    /* this is the default background image. when a link is
+     * clicked, jQuery in the footer overrides it and inserts a
+     * random image. if a page is refreshed, this image will load
+     * so that jumbotron always has a background image.           */
+    background-image: image-url('site-img/food-image8.jpg');
     
     .recipe {   
         
@@ -188,10 +193,10 @@ body {
     }
   }
   
-  #search {
-    text-align: center;
-    padding: 15px 0 25px 0;
-  }
+/** about page **/
+    #about {
+        padding: 0 10% 20px 10%;
+    }
   
   /** homepage **/
     .food-col {
@@ -206,13 +211,25 @@ body {
         font-size: 50px;
         
     }
-/** about page **/
-    #about {
-        padding: 0 10% 20px 10%;
-    }
-/** recipe page **/
+    
+/** dynamic views **/
+    /** recipe page **/
     #print-link {
         margin-top: 15px;
+    }
+    
+    .recipe-list td {
+        padding: 5px !important;
+    }
+    
+/** search page **/
+    #second-row-cats {
+        padding-bottom: 25px;
+    }
+    
+    .search-head {
+    text-align: center;
+    padding: 15px 0 25px 0;
     }
     
 } /** end body **/

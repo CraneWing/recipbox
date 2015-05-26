@@ -19,12 +19,16 @@
       </div> <!-- footer container -->
     </footer>
     <script>
+      // generates random jumbotron background every time link clicked.
+      // excludes main dropdown links.
       $(document).ready(function() {
          $('a, li > a').on('click', function() {
-            var randomImgStyle = "<style> .jumbotron { background-image: url(<%= image_url 'site-img/food-image' + rand(37).to_s + '.jpg' %>); } </style>"
+            
+                var randomImgStyle = "<style> .jumbotron { background-image: url(<%= image_url 'site-img/food-image' + rand(37).to_s + '.jpg' %>) !important; } </style>"
                 $('html > head').append(randomImgStyle);
-                $('.jumbotron').fadeIn(400);
-            });
+                $('.jumbotron').fadeIn(500);  
+            
+         });
       });
     </script>
   </body>
