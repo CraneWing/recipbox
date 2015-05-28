@@ -160,7 +160,6 @@ body {
     }
     
     #social {
-        margin-top: -85px !important;
         text-align: right;
         
         ul {
@@ -177,59 +176,5 @@ body {
             }
         }
     }
-  }
-  
-  /** static pages **/
- 
-  .container-full {
-    width: 100%;
-    padding: 25px 0;
-    margin: 0 20px;
-  }
-  
-  #home-subhead {
-    .col-md-6 {
-        padding: 20px;
-    }
-  }
-  
-/** about page **/
-    #about {
-        padding: 0 10% 20px 10%;
-    }
-  
-  /** homepage **/
-    .food-col {
-        text-align: center;
-        h2 {
-            margin-top: 2px;
-            padding-bottom: 8px;
-        }
-    }
-  
-    .food-col-i {
-        font-size: 50px;
-        
-    }
-    
-/** dynamic views **/
-    /** recipe page **/
-    #print-link {
-        margin-top: 15px;
-    }
-    
-    .recipe-list td {
-        padding: 5px !important;
-    }
-    
-/** search page **/
-    #second-row-cats {
-        padding-bottom: 25px;
-    }
-    
-    .search-head {
-    text-align: center;
-    padding: 15px 0 25px 0;
-    }
-    
+  }   
 } /** end body **/

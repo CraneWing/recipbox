@@ -1,0 +1,16 @@
+= title('Edit Avatar')
+
+.container
+  .row.row-custom.profile
+    %h2 Crop Avatar
+    = image_tag @user.avatar_url(:large), id: "cropbox"
+    %br/
+    %h3 Preview
+    %div{:style => "width:150px; height:150px; overflow:hidden"}
+      = image_tag @user.avatar.url(:large), id: "preview"
+    
+    = simple_form_for(@user) do |f|
+      - %w[x y w h].each do |attribute|
+        = f.hidden_field "crop_#{attribute}"
+      .actions
+        = f.submit "Crop", class: 'btn btn-default'

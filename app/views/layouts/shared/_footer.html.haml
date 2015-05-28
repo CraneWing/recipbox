@@ -1,0 +1,44 @@
+%footer.footer
+  .container
+    .row
+      .col-md-6
+        %ul
+          %li
+            %a{:href => "#"} Search Recipes
+          %li
+            %a{:href => "#"} All Recipes
+          %li= link_to 'About Us', pages_about_path
+          %li
+            %a{:href => "#"} Privacy Policy
+      .col-md-6.pull-right#social
+        %ul
+          %li
+            %a{:href => "#"}
+              %i.icon-twitter
+          %li
+            %a{:href => "#"}
+              %i.icon-facebook
+          %li
+            %a{:href => "#"}
+              %i.icon-pinterest
+        %p
+        Icons from
+        %a{:href => "http://www.flaticon.com"} Flaticon
+        and are used under a creative commons license.
+:javascript
+  // generates random jumbotron background every time link clicked.
+  // excludes main dropdown links.
+  $(document).ready(function() {
+     $('a, li > a').on('click', function() {
+        
+            var randomImgStyle = "<style> .jumbotron { background-image: url(#{image_url 'site-img/food-image' + rand(37).to_s + '.jpg'}) !important; } </style>"
+            $('html > head').append(randomImgStyle);
+            $('.jumbotron').fadeIn(500);  
+        
+     });
+  });
+  
+  // call for jQuery timeago
+  $(function() {
+    $('time.timeago').timeago();
+  });

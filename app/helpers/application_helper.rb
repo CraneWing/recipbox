@@ -10,6 +10,16 @@ module ApplicationHelper
       
    end
    
+   # for jQuery timeago plugin - from Brandon Hilkert
+   def timeago(time, options = {})
+     options[:class] ||= "timeago"
+     content_tag(
+       :time,
+       time.to_s,
+       options.merge(datetime: time.getutc.iso8601)
+     ) if time
+   end
+   
     # bootstrap classes to flash alerts
    def flash_class(level)
       case level

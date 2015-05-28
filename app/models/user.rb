@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   has_many :recipes
+  has_many :posts
+  has_many :comments
+  
   mount_uploader :avatar, ImageUploader
   
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h

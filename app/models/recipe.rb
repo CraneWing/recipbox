@@ -5,7 +5,7 @@ class Recipe < ActiveRecord::Base
    scope :unapproved, proc { where(:approved => 0) }
    scope :untagged, proc { where(:tags => 0) }
    
-   validates_presence_of :ingredients, :steps
+   validates_presence_of :title, :ingredients, :steps
    
    mount_uploader :recipe_img, ImageUploader
 end

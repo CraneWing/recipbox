@@ -1,0 +1,30 @@
+= title(@recipe.title)
+
+.container
+  .row.row-custom
+    #recipe-info
+      .col-md-6
+        %hr/
+        %h2= @recipe.title
+        %p
+          Submitted by
+          = link_to @user.username, user_path
+        - if @recipe.comments != nil
+          %p= @recipe.comments
+        %hr/
+        %strong= split_ingredients(@recipe.ingredients)
+        %br/
+        %br/
+        %p= @recipe.steps.html_safe
+        %p
+          %strong Tagged:
+          - get_recipe_tags(@recipe.tags)
+        - @tagged.each do |key, value|
+          &bull;
+          %a{:href => key}= value
+      .col-md-6
+        - if @recipe.recipe_img != nil
+          = image_tag @recipe.recipe_img.url(:medium)
+    .clearfix
+      %p#print-link= link_to 'Print Recipe', '#', onclick: 'printPage()', class: 'btn btn-default btn-sm'
+        

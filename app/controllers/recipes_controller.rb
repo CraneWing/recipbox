@@ -30,8 +30,12 @@ class RecipesController < ApplicationController
   def update
      @recipe = Recipe.find(params[:id])
      if @recipe.update(recipe_params)
+        if params[:recipe][:recipe_img].present?
+          render :crop
+        else
          redirect_to current_user
          flash[:success] = 'Recipe was successfully updated'
+        end
      else
          render action: 'edit'
      end

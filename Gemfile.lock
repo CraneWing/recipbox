@@ -108,6 +108,8 @@ GEM
       activesupport (>= 4.1.0)
     google-webfonts (0.2.0)
       actionpack (>= 3.0.0)
+    haml (4.0.6)
+      tilt
     has_scope (0.6.0)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -241,6 +243,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   google-webfonts
+  haml
   jbuilder (~> 2.0)
   jquery-rails
   local_time
