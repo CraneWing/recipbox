@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # can view all recipes, their individual recipes, add recipe or edit
   # their existing recipes
   resources :recipes
-  
+  resources :forums, only: [:index, :show]
   resources :users, only: [:index, :show, :edit, :update]
    
   # static pages 

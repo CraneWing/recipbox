@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150527141442) do
+ActiveRecord::Schema.define(version: 20150529201049) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -61,6 +61,11 @@ ActiveRecord::Schema.define(version: 20150527141442) do
     t.datetime "updated_at",               null: false
   end
 
+  create_table "forums", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "pages", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -72,6 +77,7 @@ ActiveRecord::Schema.define(version: 20150527141442) do
     t.text     "body",       limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "topic_id",   limit: 4
   end
 
   create_table "recipes", force: :cascade do |t|
@@ -85,6 +91,13 @@ ActiveRecord::Schema.define(version: 20150527141442) do
     t.string   "recipe_img",  limit: 255
     t.text     "comments",    limit: 65535
     t.integer  "approved",    limit: 4,     default: 0
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string   "title",       limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.text     "description", limit: 65535
   end
 
   create_table "users", force: :cascade do |t|

@@ -24,7 +24,7 @@ gem 'rails-jasny-bootstrap-extension'
 #gem 'tinymce-rails'
 #gem 'will_paginate'
 
-# for uploading images
+# for uploading and editing images
 gem 'carrierwave'
 gem 'rmagick'
 
