@@ -1,0 +1,7 @@
+= title('Add Comment')
+.container
+  .row.row-custom
+    = simple_form_for(@comment) do |f|
+      .form-row
+        = f.input :body, class: 'form-control'
+      = f.submit 'Add Comment', class: 'btn btn-primary'

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :recipes
-  has_many :posts, through: :topic
+  has_many :posts
   has_many :comments
   
   mount_uploader :avatar, ImageUploader

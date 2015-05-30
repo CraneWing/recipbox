@@ -2,5 +2,24 @@
 @import 'bootstrap';
 
 .forms-row, .row-custom, .panel-forum {
-    padding: 10px 15% 25px 15%;
+    padding: 10px 10% 25px 10%;
   }
+  
+h1 {
+    padding-left: 70px
+}
+
+.clearfix {
+    clear: both;
+}
+
+.microthumb {
+    height: 45px;
+    width: 45px;
+}
+
+.post-col-left,
+.post-col-right {
+   padding: 20px;
+}
+
