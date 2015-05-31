@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150530223628) do
+ActiveRecord::Schema.define(version: 20150531225536) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -53,16 +53,11 @@ ActiveRecord::Schema.define(version: 20150530223628) do
   end
 
   create_table "comments", force: :cascade do |t|
+    t.text     "body",       limit: 65535
     t.integer  "user_id",    limit: 4
     t.integer  "post_id",    limit: 4
-    t.text     "body",       limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-  end
-
-  create_table "forums", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "pages", force: :cascade do |t|
@@ -71,12 +66,12 @@ ActiveRecord::Schema.define(version: 20150530223628) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
+    t.string   "title",      limit: 255
     t.text     "body",       limit: 65535
+    t.integer  "user_id",    limit: 4
+    t.integer  "topic_id",   limit: 4
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-    t.integer  "topic_id",   limit: 4
-    t.string   "title",      limit: 255
   end
 
   create_table "recipes", force: :cascade do |t|
@@ -93,10 +88,10 @@ ActiveRecord::Schema.define(version: 20150530223628) do
   end
 
   create_table "topics", force: :cascade do |t|
-    t.string   "title",       limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.text     "description", limit: 65535
+    t.string   "title",      limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.text     "body",       limit: 65535
   end
 
   create_table "users", force: :cascade do |t|
@@ -118,6 +113,9 @@ ActiveRecord::Schema.define(version: 20150530223628) do
     t.string   "avatar",                 limit: 255,   default: "avatar-default.jpg"
     t.string   "location",               limit: 255
     t.text     "profile",                limit: 65535
+    t.boolean  "forem_admin",            limit: 1,     default: false
+    t.string   "forem_state",            limit: 255,   default: "pending_review"
+    t.boolean  "forem_auto_subscribe",   limit: 1,     default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

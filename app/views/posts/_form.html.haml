@@ -1,0 +1,8 @@
+= simple_form_for(@post) do |f|
+  .form-row
+    = f.input :title, class: 'form-control'
+  .form-row
+    = f.input :body, class: 'form-control', input_html: { :rows => 8 }
+  = f.submit 'Submit', class: 'btn btn-primary'
+  %a
+    = link_to 'Cancel', topic_path(topic), class: 'btn btn-default'

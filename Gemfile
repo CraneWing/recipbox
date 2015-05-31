@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.1'
+gem 'rails', '4.2'
 gem 'mysql2'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -16,9 +16,6 @@ gem 'devise'
 # for admin - written this way to properly install with Rails 4
 gem 'activeadmin', github: 'activeadmin'
 
-# for user forum
-gem 'forem'
-
 # styling and formatting helper gems
 gem 'bootstrap-sass'
 gem 'simple_form'
@@ -26,7 +23,7 @@ gem 'google-webfonts'
 gem 'font-awesome-rails'
 gem 'rails-jasny-bootstrap-extension'
 #gem 'tinymce-rails'
-#gem 'will_paginate'
+gem 'will_paginate'
 
 # for uploading and editing images
 gem 'carrierwave'

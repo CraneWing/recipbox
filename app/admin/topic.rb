@@ -1,0 +1,14 @@
+ActiveAdmin.register Topic do
+
+   index do
+      selectable_column
+      column :id
+      column :forum_cat
+      column :description
+      column 'Actions' do |resource|
+         link_to 'Edit', edit_admin_topic_path(resource)
+      end
+   end
+
+   permit_params :forum_cat, :description
+end

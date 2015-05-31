@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :admins, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, :controllers => {:registrations => 'registrations'}
@@ -8,6 +9,10 @@ Rails.application.routes.draw do
   # their existing recipes
   resources :recipes
   resources :users, only: [:index, :show, :edit, :update]
+  resources :forums
+  resources :topics
+  resources :posts
+  resources :comments
    
   # static pages 
   root 'pages#welcome'
