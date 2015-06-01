@@ -1,10 +1,10 @@
 = title('The Forum')
 .container
   .panel.panel-info
-    - @forum_topics.each do |ft|
+    - @topics.each do |topic|
       .panel-heading
-        = ft.forum_cat
+        = topic.title
       .panel-body
-        = ft.description
+        = topic.description
 
       

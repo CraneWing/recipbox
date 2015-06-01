@@ -2,11 +2,11 @@ class ForumsController < ApplicationController
    layout 'forums'
    
    def index
-      @forum_topics = ForumTopic.all
+      @topics = Topic.all
    end
    
    def show
-      @forum_topic = ForumTopic.find(params[:id])
-      @posts = ForumTopic.includes(:posts).find(params[:topic_id])
+      @topic = Topic.find(params[:id])
+      @posts = Post.where({ topic_id: @topic.id })
    end
 end

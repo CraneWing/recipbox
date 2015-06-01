@@ -1,3 +1,6 @@
 .container
   .row.row-custom
-    %h2= @forum_topic.forum_cat
+    %h2= @topic.title
+    - @posts.each do |post|
+      post.title
+      post.body
