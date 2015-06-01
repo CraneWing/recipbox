@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.1'
+gem 'rails', '4.2'
 gem 'mysql2'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -20,9 +20,13 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'google-webfonts'
+gem 'font-awesome-rails'
 gem 'rails-jasny-bootstrap-extension'
-#gem 'tinymce-rails'
-#gem 'will_paginate'
+gem 'will_paginate'
+
+# forum add-ons
+gem 'bootsy'
+gem 'emojione-rails', '~> 0.0.5'
 
 # for uploading and editing images
 gem 'carrierwave'

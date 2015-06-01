@@ -1,5 +1,7 @@
-class Forum < ActiveRecord::Base
-   has_many :posts
+class Froum < ActiveRecord::Base
    has_many :comments
-   has_many :forum_topics
+   has_many :topics
+   has_many :posts
+   
+   delegate :username, to: :user
 end

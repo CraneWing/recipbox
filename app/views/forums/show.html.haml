@@ -1,6 +1,27 @@
+= title(@topic.title)
 .container
   .row.row-custom
+<<<<<<< HEAD
     %h2= @topic.title
     - @posts.each do |post|
       post.title
       post.body
+=======
+    .panel.panel-default
+      .panel-heading
+        %h2= @topic.title
+      .panel-body
+        %table.table
+          - @posts.each do |post|
+            %tr
+              %td
+                %h5
+                  %a= link_to post.title, post_path(post)
+                %p
+                  = truncate(post.body, omission: '...', separator: ' ', length: 70)
+                %p
+                  By
+                  %strong= post.user.username
+                  at
+                  = local_time(post.created_at, '%d %B %Y, %l:%M %P')
+>>>>>>> c163785650d31a0fc52b7840efcf040b49e0ff77

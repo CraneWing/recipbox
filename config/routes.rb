@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   devise_for :admins, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, :controllers => {:registrations => 'registrations'}
@@ -7,30 +9,19 @@ Rails.application.routes.draw do
   # can view all recipes, their individual recipes, add recipe or edit
   # their existing recipes
   resources :recipes
-  resources :forums, only: [:index, :show]
   resources :users, only: [:index, :show, :edit, :update]
+  resources :forums
+  resources :posts
+  resources :topics do
+    resources :posts
+  end
+  
+  resources :comments
    
   # static pages 
   root 'pages#welcome'
 
   get 'pages/about' => 'pages#about'
   get 'pages/search' => 'pages#search'
-
-  
-  # user devise routes
-  get 'users/sign_up' => 'devise/registrations#new'
-  get 'registrations/edit' => 'devise/registrations#edit'
-  get 'users/sign_in' => 'devise/sessions#new'
-  get 'users/sign_out' => 'devise/sessions#destroy'
-  
-  #user routes
-  get 'users/:id/edit' => 'users#edit'
-  patch 'users/:id' => 'users#update'
-  
-  # recipe routes
-  post 'recipes/create' => 'recipes#create'
-  get 'recipes/:id/edit' => 'recipes#edit'
-  get 'recipes/:id' => 'recipes#show'
-  post 'recipes/:id' => 'recipes#update'
   
 end

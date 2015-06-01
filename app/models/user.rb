@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :recipes
-  has_many :posts, through: :topic
+  has_many :posts
   has_many :comments
   
   mount_uploader :avatar, ImageUploader
@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :authentication_keys => [:login]
+  
+  def forem_name
+    username
+  end
   
   # "virtual" attribute so can login with username OR email 
   attr_accessor :login
@@ -29,7 +33,7 @@ class User < ActiveRecord::Base
     avatar.recreate_versions! if crop_x.present?
   end
    
-   # this permits login using usernam OR password
+   # this permits login using username OR password
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)

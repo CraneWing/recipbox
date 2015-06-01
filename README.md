@@ -4,7 +4,7 @@ RecipeBox is a simple app built with Ruby on Rails. It is a kind of "student pro
 
 Cooking enthusiasts can view recipes, search for them by type, such as entree or dessert, or ingredient, such as chicken or potatoes.
 
-Users can upload their own favorite recipes by registering. Minimum user requirements are an email and password. They can fill out additional information on a profile page. Eventually a blog for guest "chefs" will be developed, along with a forum where food fans can post questions on recipes or techniques and provide advice to others.
+Users can upload their own favorite recipes by registering. Minimum user requirements are an email, username and password. They can fill out additional information on a profile page. Eventually a blog for guest "chefs" will be developed, along with a forum where food fans can post questions on recipes or techniques and provide advice to others.
 
 Gems used in project include:
 

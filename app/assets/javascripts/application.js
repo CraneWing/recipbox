@@ -12,9 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootsy
 //= require jquery.jcrop
 //= require jquery.timeago
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require fontsmoothie
+//= require emojione
 //= require_tree .

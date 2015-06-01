@@ -3,7 +3,7 @@
   .panel.panel-info
     - @topics.each do |topic|
       .panel-heading
-        = topic.title
+        = link_to topic.title, topic_path(topic)
       .panel-body
         = topic.description
 

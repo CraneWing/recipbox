@@ -1,0 +1,28 @@
+= title('Post Topic')
+.container
+  .row
+    %ol.breadcrumb.pull-right
+      %li
+        = link_to 'Forum', forums_path
+      %li
+        %a{:href => "/topics/#{@post.topic.id}"}= @post.topic.title
+      %li
+        Post 
+    .clearfix
+    %table.table.table-bordered
+      %tr
+        %td.col-md-3.post-col-left
+          = @post.user.username
+          %br/
+          = image_tag @post.user.avatar, class: 'microthumb'
+          %br/
+          Joined
+          = local_time(@post.user.created_at, '%d %B %Y')
+        %td.col-md-9.post-col-right
+          %p
+            %strong= @post.title
+          %p
+            = @post.body
+          %p
+            = link_to 'Reply', comment_path, class: 'btn btn-info pull-right'
+      
