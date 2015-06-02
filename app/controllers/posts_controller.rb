@@ -1,24 +1,28 @@
 class PostsController < ApplicationController
    layout 'forums'
-   
+   before_action :authenticate_user!, except: [:show]
    def new
-      @post = Post.new
+      @topic = Topic.find(params[:topic_id])
+      @post =  @topic.posts.build
    end
    
    def create
-      @post = Post.new(post_params)
+      @topic = Topic.find(params[:topic_id])
+      #@post.user_id = current_user.id
+      @post =  @topic.posts.create(post_params)
       
       if @post.save
          flash[:success] = 'Post was successfully added'
-         redirect_to topics_path
+         redirect_to topic_path(@topic)
       else
          flash[:danger] = 'There was a problem posting your comment'
+         render 'new'
       end
    end
    
    def show
-      @post = Post.find(params[:id])
-      @topic = Topic.where("id = ?", @post.topic_id)
+      @topic = Topic.find(params[:topic_id])
+      @post = Topic.posts.find(params[:id])
    end
    
    private

@@ -1,4 +1,4 @@
-= simple_form_for(@post) do |f|
+= simple_form_for([@topic, Post.new]) do |f|
   .form-row
     = f.input :title, class: 'form-control'
   .form-row

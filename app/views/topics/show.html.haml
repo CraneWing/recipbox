@@ -16,16 +16,18 @@
               %tr
                 %td
                   %h5
-                    %a= link_to post.title, topic_post_path(@topic, post)
+                    %a= link_to post.title, topics_posts_path(post)
                   %p
                     = truncate(post.body, omission: '...', separator: ' ', length: 70)
                   %p
                     By
-                    %strong= post.user.username
+                    %strong
+                      = post.user.username
                     at
                     = local_time(post.created_at, '%d %B %Y, %l:%M %P')
         - else
           %p
             There are no posts in this category yet.
         = link_to 'New Post', new_topic_post_path(@topic, @post), class: 'btn btn-primary pull-right'
+        
     
