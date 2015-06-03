@@ -16,7 +16,7 @@
               %tr
                 %td
                   %h5
-                    %a= link_to post.title, topics_posts_path(post)
+                    %a= link_to post.title, topic_post_url(@topic, post)
                   %p
                     = truncate(post.body, omission: '...', separator: ' ', length: 70)
                   %p

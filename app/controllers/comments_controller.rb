@@ -2,15 +2,18 @@ class CommentsController < ApplicationController
   layout 'forums'
   
   def new
-    @comment = Comment.new
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.build
   end
   
   def create
-    @comment = Comment.new
+      @post = Post.find(params[:post_id])
+      #@post.user_id = current_user.id
+      @comment = @post.comments.create(comment_params)
     
     if @comment.save
       flash[:success] = 'Comment was successfully added'
-      redirect_to @post
+      redirect_to post_path(@post.id)
     else
       flash[:danger] = 'There was a problem posting your comment'
     end

@@ -41,10 +41,12 @@ ActiveRecord::Schema.define(version: 20150602182233) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
-    t.string  "title",    limit: 191
-    t.text    "body",     limit: 65535
-    t.integer "topic_id", limit: 4
-    t.integer "user_id",  limit: 4
+    t.string   "title",      limit: 191
+    t.text     "body",       limit: 65535
+    t.integer  "topic_id",   limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id", using: :btree
@@ -64,8 +66,10 @@ ActiveRecord::Schema.define(version: 20150602182233) do
   end
 
   create_table "topics", force: :cascade do |t|
-    t.string "title",       limit: 191
-    t.text   "description", limit: 65535
+    t.string   "title",       limit: 191
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "users", force: :cascade do |t|
