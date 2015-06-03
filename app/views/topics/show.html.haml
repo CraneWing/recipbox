@@ -3,7 +3,9 @@
   .row.row-custom
     %ol.breadcrumb.pull-right
       %li
-        %a= link_to 'Forum', forums_path
+        = link_to 'Home', root_path
+      %li
+        = link_to 'Forum', forums_path
       %li= @topic.title
     .clearfix
     .panel.panel-default

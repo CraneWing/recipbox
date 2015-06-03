@@ -3,39 +3,78 @@
   .row
     %ol.breadcrumb.pull-right
       %li
+        = link_to 'Home', root_path
+      %li
         = link_to 'Forum', forums_path
       %li
         %a{:href => "/topics/#{@post.topic.id}"}= @post.topic.title
       %li
-        Post 
+        Post
     .clearfix
+    - if user_signed_in?
+      %p
+        Logged in as
+        %strong
+          = current_user.username
     %table.table.table-bordered
       %tr
-        %td.col-md-3.post-col-left
-          = @post.user.username
+        %td.col-md-3.info.post-col-left
+          %strong
+            = @post.user.username
           %br/
           = image_tag @post.user.avatar, class: 'microthumb'
           %br/
-          Joined
-          = local_time(@post.user.created_at, '%d %B %Y')
+          %span
+            Joined
+            %br/
+            = local_time(@post.user.created_at, '%e %B %Y')
+            %br/
+            %strong
+            Location:
+            %br/
+            = @post.user.location
         %td.col-md-9.post-col-right
           %p
             %strong= @post.title
           %p
             = (@post.body).html_safe
           %br/
-          - if @comments.count > 0
-            = @comments.each do |comment|
-              comment.body
+      - if @comments.count > 0
+        - @comments.each do |comment|
+          %tr
+            %td.col-md-3.info.post-col-left
+              %strong= comment.user.username
               %br/
-              By
-              = comment.user.username
-              at
-              = local_time(comment.created_at)
-          - else
+              - if comment.user.avatar == "avatar-default.jpg"
+                = image_tag "fallback/default-avatar.jpg"
+              - else
+                = image_tag comment.user.avatar.url(:thumb), class: 'microthumb'
+              %br
+              %span
+                %strong
+                  Joined
+                %br/
+                = local_time(comment.user.created_at, '%e %B %Y')
+                %br/
+                %strong
+                  Location:
+                %br/
+                = comment.user.location
+            %td.col-md-9.post-col-right
+              = (comment.body).html_safe
+              %em
+                = local_time(comment.created_at, '%e %B %Y, %l:%M %P')
+        %tr
+          %td.col-md-3
+          %td.col-md-9
+            = render 'comments/form'
+      - else
+        %tr
+          %td.col-md-3
+          %td.col-md-9
             %p
-              %strong
-                No replies yet. Be the first to answer.
-          %br/
-          = render 'comments/form'
+              %strong No replies yet. Be the first to answer.
+            %br
+            = render 'comments/form' 
+          
       

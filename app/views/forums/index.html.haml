@@ -1,5 +1,12 @@
 = title('The Forum')
 .container
+  %p#forum-welcome
+    %strong
+      Welcome to the RecipeBox forum! Post questions to fellow cooks and food enthusiasts in the topic areas below. You may browse topics and posts, but if you want to add a post or reply, you must
+      = link_to 'register for an account', new_user_registration_path
+      or
+      = link_to 'login', new_user_session_path
+      if you're aleady a member.
   .panel.panel-info
     - @topics.each do |topic|
       .panel-heading

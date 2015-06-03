@@ -1,7 +1,6 @@
 # encoding: utf-8
 
 class ImageUploader < CarrierWave::Uploader::Base
-
   include CarrierWave::RMagick
 
   storage :file
@@ -24,6 +23,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   
   version :large do
     resize_to_limit(500, 500)
+  end
+  
+  def default_url
+    "fallback/" + [version_name, "avatar-default.jpg"].compact.join('_')
   end
   
   def crop

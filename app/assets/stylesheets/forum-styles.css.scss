@@ -3,6 +3,20 @@
 @import 'emojione';
 @import 'bootsy';
 
+header {
+    width: 100%;
+    background-color: #f4f4f4;
+    padding-top: 10px;
+    h1 {
+        padding: 6px 0 2px 30px;
+    }
+}
+
+#forum-welcome {
+    padding: 12px 0 8px 0;
+}
+
+
 .forms-row, .row-custom, .panel-forum {
     padding: 10px 10% 25px 10%;
   }
@@ -25,3 +39,10 @@ h1 {
    padding: 20px;
 }
 
+.post-col-left {
+    text-align: center;
+    span {
+        font-size: 11px;
+        line-height: 0.2px;
+    }
+}
