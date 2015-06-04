@@ -1,12 +1,16 @@
 = title(@topic.title)
 .container
   .row.row-custom
-<<<<<<< HEAD
+    - if user_signed_in?
+      %p
+        Logged in as
+        %strong
+          = current_user.username
+        and may add posts or comments.
     %h2= @topic.title
     - @posts.each do |post|
       post.title
       post.body
-=======
     .panel.panel-default
       .panel-heading
         %h2= @topic.title

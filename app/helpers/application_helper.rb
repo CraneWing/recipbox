@@ -29,4 +29,13 @@ module ApplicationHelper
          when :alert then 'alert alert-info'
       end
    end
+   
+   def forum_signed_in
+      if user_signed_in?
+         render 'layouts/forums_shared/logged_in'
+      else
+         render 'layouts/forums_shared/not_logged'
+      end
+   end
+      
 end

@@ -18,5 +18,4 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require fontsmoothie
-//= require emojione
 //= require_tree .

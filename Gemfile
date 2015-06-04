@@ -26,8 +26,8 @@ gem 'will_paginate'
 
 # forum add-ons
 gem 'bootsy'
-gem 'emojione-rails', '~> 0.0.5'
-
+gem 'gemoji-parser'
+gem 'gemoji'
 # for uploading and editing images
 gem 'carrierwave'
 gem 'rmagick'
@@ -43,5 +43,6 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'better_errors'
+  gem 'faker'
 end
 

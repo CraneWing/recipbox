@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
+   include EmojiHelper
    layout 'forums'
    before_action :authenticate_user!, except: [:show]
+   
    def new
       @topic = Topic.find(params[:topic_id])
       @post = @topic.posts.build
@@ -8,8 +10,8 @@ class PostsController < ApplicationController
    
    def create
       @topic = Topic.find(params[:topic_id])
-      #@post.user_id = current_user.id
       @post = @topic.posts.create(post_params)
+      @post.user_id = current_user.id
       
       if @post.save
          flash[:success] = 'Post was successfully added'

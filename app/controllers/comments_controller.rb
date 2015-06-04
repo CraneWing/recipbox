@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   layout 'forums'
+  include EmojiHelper
   
   def new
     @post = Post.find(params[:post_id])
@@ -7,20 +8,16 @@ class CommentsController < ApplicationController
   end
   
   def create
+      @topic = Topic.find(:topic_id)
       @post = Post.find(params[:post_id])
       @comment = @post.comments.create(comment_params)
-    if user_signed_in?
-      @comment.user_id = current_user.id
       if @comment.save
+        @comment.user_id = current_user.id
         flash[:success] = 'Comment was successfully added'
-        redirect_to topic_post_path
+        redirect_to topic_post_url(@topic.id, @post.id)
       else
         flash[:danger] = 'There was a problem posting your comment'
       end
-    else
-      flash[:danger] = 'You must be logged in to post a comment on this forum'
-      redirect_to forums_path
-    end
   end
   
   private

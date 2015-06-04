@@ -8,6 +8,7 @@
         = link_to 'Forum', forums_path
       %li= @topic.title
     .clearfix
+    = forum_signed_in
     .panel.panel-default
       .panel-heading
         %h2= @topic.title
@@ -18,9 +19,9 @@
               %tr
                 %td
                   %h5
-                    %a= link_to post.title, topic_post_url(@topic, post)
-                  %p
-                    = truncate(post.body, omission: '...', separator: ' ', length: 70)
+                    = link_to post.title, topic_post_url(@topic, post)
+                  = truncate(strip_tags(post.body), omission: '...', separator: ' ', length: 120)
+                  %br/
                   %p
                     By
                     %strong
