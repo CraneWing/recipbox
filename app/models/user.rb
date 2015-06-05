@@ -14,20 +14,16 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :authentication_keys => [:login]
   
-  def forem_name
-    username
-  end
-  
   # "virtual" attribute so can login with username OR email 
   attr_accessor :login
   
   validates :email, presence: true,
     uniqueness: { case_sensitive: false }
   
-  validates :username, presence: true,
-      length: {maximum: 255},
-      format: { with: /\A[a-zA-Z0-9]*\z/,
-      message: "Only letters and numbers allowed." }
+  #validates :username, presence: true,
+  #    length: {maximum: 191},
+  #    format: { with: /\A[a-zA-Z0-9]*\z/,
+  #    message: "Only letters and numbers allowed." }
       
   def crop_avatar
     avatar.recreate_versions! if crop_x.present?

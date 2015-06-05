@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
    include EmojiHelper
+   require 'will_paginate/array'
    layout 'forums'
    before_action :authenticate_user!, except: [:show]
    
@@ -25,7 +26,7 @@ class PostsController < ApplicationController
    def show
       @topic = Topic.find(params[:topic_id])
       @post = Post.find(params[:id])
-      @comments = Comment.where("post_id = ?", @post.id)
+      @comments = Comment.where("post_id = ?", @post.id).order('created_at asc')
    end
    
    private

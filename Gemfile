@@ -22,7 +22,7 @@ gem 'simple_form'
 gem 'google-webfonts'
 gem 'font-awesome-rails'
 gem 'rails-jasny-bootstrap-extension'
-gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 # forum add-ons
 gem 'bootsy'

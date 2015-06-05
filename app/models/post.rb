@@ -3,5 +3,5 @@ class Post < ActiveRecord::Base
    belongs_to :topic
    belongs_to :user
    
-   delegate :username, to: :user
+   delegate :username, :avatar, :location, to: :user
 end

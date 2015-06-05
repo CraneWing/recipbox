@@ -16,18 +16,18 @@
       %tr
         %td.col-md-3.info.post-col-left
           %strong
-            = @post.user.username
+            = @post.username
           %br/
-          - if @post.user.avatar == "avatar-default.jpg" || @post.user.avatar.blank?
+          - if @post.avatar == "avatar-default.jpg" || @post.avatar.blank?
             = image_tag "fallback/avatar-default.jpg", class: 'microthumb'
           - else
-            = image_tag @post.user.avatar.url(:thumb), class: 'microthumb'
+            = image_tag @post.avatar.url(:thumb), class: 'microthumb'
           %br/
           %span
             %strong
               Joined
             %br/
-            = local_time(@post.user.created_at, '%e %B %Y')
+            = local_time(@post.created_at, '%e %B %Y')
             %br/
             %strong
               Location:
@@ -44,25 +44,26 @@
         - @comments.each do |comment|
           %tr
             %td.col-md-3.info.post-col-left
-              %strong= comment.user.username
+              %strong= comment.username
               %br/
-              - if comment.user.avatar == "avatar-default.jpg" || comment.user.avatar.blank?
+              - if comment.avatar == "avatar-default.jpg" || comment.avatar.blank?
                 = image_tag "fallback/avatar-default.jpg", class: 'microthumb'
               - else
-                = image_tag comment.user.avatar.url(:thumb), class: 'microthumb'
+                = image_tag comment.avatar.url(:thumb), class: 'microthumb'
               %br
               %span
                 %strong
                   Joined
                 %br/
-                = local_time(comment.user.created_at, '%e %B %Y')
+                = local_time(comment.created_at, '%e %B %Y')
                 %br/
                 %strong
                   Location:
                 %br/
-                = comment.user.location
+                = comment.location
             %td.col-md-9.post-col-right
               = emojify(comment.body.html_safe)
+              %br/
               %em
                 = local_time(comment.created_at, '%e %B %Y, %l:%M %P')
         %tr

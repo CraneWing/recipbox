@@ -24,10 +24,10 @@
                   %br/
                   %p
                     By
-                    %strong
-                      = post.user.username
+                    %strong= post.username
                     at
                     = local_time(post.created_at, '%d %B %Y, %l:%M %P')
+            = will_paginate @posts
         - else
           %p
             There are no posts in this category yet.

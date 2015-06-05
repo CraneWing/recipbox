@@ -11,19 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604220951) do
-
-  create_table "admins", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
-    t.string   "reset_password_token",   limit: 255
+ActiveRecord::Schema.define(version: 0) do
+   create_table "admins", force: :cascade do |t|
+    t.string   "email",                  limit: 191, default: "", null: false
+    t.string   "encrypted_password",     limit: 191, default: "", null: false
+    t.string   "reset_password_token",   limit: 191
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "current_sign_in_ip",     limit: 191
+    t.string   "last_sign_in_ip",        limit: 191
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -35,10 +34,9 @@ ActiveRecord::Schema.define(version: 20150604220951) do
     t.text    "body",    limit: 65535
     t.integer "user_id", limit: 4
     t.integer "post_id", limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
-
-  add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.string   "title",      limit: 191
@@ -49,18 +47,15 @@ ActiveRecord::Schema.define(version: 20150604220951) do
     t.datetime "updated_at",               null: false
   end
 
-  add_index "posts", ["topic_id"], name: "index_posts_on_topic_id", using: :btree
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
-
   create_table "recipes", force: :cascade do |t|
-    t.string   "title",       limit: 255
+    t.string   "title",       limit: 191
     t.text     "ingredients", limit: 65535
     t.text     "steps",       limit: 65535
-    t.string   "tags",        limit: 255,   default: "0"
+    t.string   "tags",        limit: 191,   default: "0"
     t.integer  "user_id",     limit: 4
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
-    t.string   "recipe_img",  limit: 255
+    t.string   "recipe_img",  limit: 191
     t.text     "comments",    limit: 65535
     t.integer  "approved",    limit: 4,     default: 0
   end
@@ -73,23 +68,23 @@ ActiveRecord::Schema.define(version: 20150604220951) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255,   default: "",                   null: false
-    t.string   "encrypted_password",     limit: 255,   default: "",                   null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "email",                  limit: 191,   default: "",                   null: false
+    t.string   "encrypted_password",     limit: 191,   default: "",                   null: false
+    t.string   "reset_password_token",   limit: 191
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",          limit: 4,     default: 0,                    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "current_sign_in_ip",     limit: 191
+    t.string   "last_sign_in_ip",        limit: 191
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "first_name",             limit: 45
     t.string   "last_name",              limit: 45
     t.string   "username",               limit: 30
-    t.string   "avatar",                 limit: 255,   default: "avatar-default.jpg"
-    t.string   "location",               limit: 255
+    t.string   "avatar",                 limit: 191
+    t.string   "location",               limit: 191
     t.text     "profile",                limit: 65535
   end
 

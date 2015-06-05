@@ -6,8 +6,8 @@
       %p
         %strong Username:
         = @user.username
-        = succeed "Member" do
-          %br/
+        %br/
+        %strong Joined:
         = local_time(@user.created_at, '%d %B %Y')
       %p
         %strong Name:
@@ -36,7 +36,7 @@
               - if recipe.tags == '0' || recipe.approved == 0
                 %span.pending Approval Pending
     .col-md-6
-      - if @user.avatar.blank? || @user.avatar == 'default'
-        = image_tag "assets/avatar-default.jpg"
+      - if @user.avatar.blank? || @user.avatar == 'avatar-default.jpg'
+        = image_tag "fallback/avatar-default.jpg"
       - else
         = image_tag @user.avatar.url(:thumb)
