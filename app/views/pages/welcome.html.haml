@@ -26,7 +26,7 @@
           - if user.avatar.blank? || user.avatar == 'avatar-default.jpg'
             = image_tag "fallback/avatar-default.jpg", class: 'microthumb'
           - else
-            = image_tag user.avatar.url(:thumb), class: 'microthumb'
+            = image_tag 'avatar-test/' + user.avatar, class: 'microthumb'
           = link_to user.username, user_path(user)
           Joined #{timeago(user.created_at)}
       

@@ -21,7 +21,7 @@
           - if @post.avatar == "avatar-default.jpg" || @post.avatar.blank?
             = image_tag "fallback/avatar-default.jpg", class: 'microthumb'
           - else
-            = image_tag @post.avatar.url(:thumb), class: 'microthumb'
+            = image_tag 'avatar-test/' + @post.avatar, class: 'microthumb'
           %br/
           %span
             %strong
@@ -49,7 +49,7 @@
               - if comment.avatar == "avatar-default.jpg" || comment.avatar.blank?
                 = image_tag "fallback/avatar-default.jpg", class: 'microthumb'
               - else
-                = image_tag comment.avatar.url(:thumb), class: 'microthumb'
+                = image_tag 'avatar-test/' + comment.avatar, class: 'microthumb'
               %br
               %span
                 %strong

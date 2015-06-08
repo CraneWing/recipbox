@@ -16,12 +16,6 @@
         %br/
         %br/
         %p= @recipe.steps.html_safe
-        %p
-          %strong Tagged:
-          - get_recipe_tags(@recipe.tags)
-        - @tagged.each do |key, value|
-          &bull;
-          %a{:href => key}= value
       .col-md-6
         - if @recipe.recipe_img != nil
           = image_tag @recipe.recipe_img.url(:medium)

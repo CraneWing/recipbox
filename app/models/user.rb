@@ -3,8 +3,9 @@ class User < ActiveRecord::Base
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   
-  mount_uploader :avatar, ImageUploader
+  #mount_uploader :avatar, ImageUploader
   
+  # coordinate info and crop avatar method for jCrop
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   after_update :crop_avatar
   
@@ -20,16 +21,16 @@ class User < ActiveRecord::Base
   validates :email, presence: true,
     uniqueness: { case_sensitive: false }
   
-  #validates :username, presence: true,
-  #    length: {maximum: 191},
-  #    format: { with: /\A[a-zA-Z0-9]*\z/,
-  #    message: "Only letters and numbers allowed." }
+  validates :username, presence: true,
+      length: {maximum: 191},
+      format: { with: /\A[a-zA-Z0-9\-\.\_]*\z/,
+      message: "Only letters, numbers, dot(.), dash(-) and underscore(_) allowed." }
       
   def crop_avatar
     avatar.recreate_versions! if crop_x.present?
   end
    
-   # this permits login using username OR password
+  # this permits login with username OR password
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)

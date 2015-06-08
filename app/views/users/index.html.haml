@@ -3,13 +3,13 @@
   .row.row-custom
     %h1 All Users
     %table.all-users
-      - @users.in_groups_of(4, false) do |group|
+      - @users.in_groups_of(6, false) do |group|
         %tr
           - group.each do |user|
             %td
               .avatar-wrap
-                - if user.avatar.blank? || user.avatar == 'avatar-default.jpg'
-                  = image_tag default_url
+                - if user.avatar == 'avatar-default.jpg' || user.avatar.blank?
+                  = image_tag "fallback/avatar-default.jpg"
                 - else
-                  = image_tag user.avatar.url(:thumb)
+                  = image_tag('avatar-test/' + user.avatar.to_s)
               %p.username-wrap= link_to user.username, user_path(user)

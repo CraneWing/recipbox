@@ -8,13 +8,12 @@ class CommentsController < ApplicationController
   end
   
   def create
-      @topic = Topic.find(:topic_id)
       @post = Post.find(params[:post_id])
       @comment = @post.comments.create(comment_params)
+      @comment.user_id = current_user.id
       if @comment.save
-        @comment.user_id = current_user.id
         flash[:success] = 'Comment was successfully added'
-        redirect_to topic_post_url(@topic.id, @post.id)
+        redirect_to :back
       else
         flash[:danger] = 'There was a problem posting your comment'
       end
