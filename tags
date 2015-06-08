@@ -1,6 +1,6 @@
  %p
-          %strong Tagged:
-          - get_recipe_tags(@recipe.tags)
-        - @tagged.each do |key, value|
-          &bull;
-          %a{:href => key}= value
+   %strong Tagged:
+   - get_recipe_tags(@recipe.tags)
+   - @tagged.each do |key, value|
+        &bull;
+        %a{:href => key}= value
