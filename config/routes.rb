@@ -24,6 +24,6 @@ Rails.application.routes.draw do
   root 'pages#welcome'
 
   get 'pages/about' => 'pages#about'
-  get 'pages/search' => 'pages#search'
+  get 'pages/search/:q' => 'recipes#index'
   
 end

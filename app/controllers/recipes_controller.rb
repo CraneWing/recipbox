@@ -2,7 +2,10 @@ class RecipesController < ApplicationController
   include RecipesHelper
   
   def index
-    @recipes = Recipe.all
+    @search = Recipe.solr_search do
+       fulltext params[:search]
+    end
+    @recipes = @search.results
   end
   
   def new
@@ -21,7 +24,7 @@ class RecipesController < ApplicationController
       
      if @recipe.save
         redirect_to current_user
-        flash[:success] = 'Recipe was successfully added amd will be available for view shortly'
+        flash[:success] = 'Recipe was successfully added and will be viewable shortly'
      else
         render action: 'new'
      end
