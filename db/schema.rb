@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150610171600) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 191, default: "", null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 0) do
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "categories", force: :cascade do |t|
-    t.string "cat_id", limit: 191, null: false
+    t.string "name", limit: 191, null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -56,13 +56,19 @@ ActiveRecord::Schema.define(version: 0) do
     t.string   "title",       limit: 191
     t.text     "ingredients", limit: 65535
     t.text     "steps",       limit: 65535
-    t.string   "tags",        limit: 191,   default: "0"
     t.integer  "user_id",     limit: 4
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "recipe_img",  limit: 191
     t.text     "comments",    limit: 65535
     t.integer  "approved",    limit: 1,     default: 0
+  end
+
+  create_table "recipes_categories", force: :cascade do |t|
+    t.integer  "recipe_id",   limit: 4
+    t.integer  "category_id", limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "topics", force: :cascade do |t|

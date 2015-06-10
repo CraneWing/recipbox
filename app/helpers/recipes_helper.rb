@@ -25,11 +25,10 @@ module RecipesHelper
       while i < cat_tags_len do
          @categories.each do |category|
            if category.id == cat_tags[i]
-             @tagged[category.id] = category.cat_name
+             @tagged[category.id] = category.name
            end
          end
          i += 1
       end
-   end
-      
+   end 
 end

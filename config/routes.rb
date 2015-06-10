@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # can view all recipes, their individual recipes, add recipe or edit
   # their existing recipes
   resources :recipes
+  resources :categories, only: [:show]
   resources :users, only: [:index, :show, :edit, :update, :delete]
   resources :forums, only: [:index]
   resources :comments, only: [:edit, :update, :delete]

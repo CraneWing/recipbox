@@ -22,7 +22,8 @@
     .clearfix
     %p
       %strong Tagged:
-      - get_recipe_tags(@recipe.tags)
-      = @tagged
+      - @categories.each do |category|
+        &bull;
+        %a{:href => "categories/#{key}"}= value 
       %p#print-link= link_to 'Print Recipe', '#', onclick: 'printPage()', class: 'btn btn-default btn-sm'
         

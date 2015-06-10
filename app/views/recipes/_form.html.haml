@@ -3,11 +3,8 @@
   = f.input :ingredients, class: 'form-control', required: true, placeholder: 'Separate each ingredient with a semicolon (;)', input_html: { :rows => 8 }
   = f.input :steps, class: 'form-control', required: true, input_html: { :rows => 8 }
   = f.input :comments, class: 'form-control', input_html: { :rows => 8 }
-  
   = f.label 'Add optional recipe image'
   = f.file_field :recipe_img
-  
-  = f.hidden_field :user_id, value: current_user.id
   %br/
   = f.button :submit, 'Create Recipe', class: 'btn btn-primary'
 %br/

@@ -2,17 +2,21 @@
 
 .container
   .row.row-custom
-    %h2.search-head All Recipes
+    %h2.search-head Search Recipes
     = form_tag recipes_path, method: :get, class: "forms" do
       = text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search recipes'
       %br/
       = submit_tag 'Search', class: "btn btn-primary"
+      = button_tag 'Reset', type: :reset, class: "btn btn-default"
       %br
       %br
-    - @recipes.each do |recipe|
-      %a{:href => "recipes/#{recipe.id}"}= recipe.title
-      %br/
-  %h2.search-head Popular Categories
+    - if !@recipes.blank?
+      %h2
+        Search Result
+      - @recipes.each do |recipe|
+        %a{:href => "recipes/#{recipe.id}"}= recipe.title
+        %br/
+  %h2.search-head Or Click These Popular Categories!
   .row
     .col-md-4.food-col
       %i.icon-spaghetti2.food-col-i
@@ -25,7 +29,7 @@
       %h3 Salads
     .col-md-4.food-col
       %i.icon-chickenwhole.food-col-i
-      %h3 Meat Dishes
+      %h3 Entrees
     .col-md-4.food-col
       %i.icon-vegbasket.food-col-i
       %h3 Vegetable Dishes

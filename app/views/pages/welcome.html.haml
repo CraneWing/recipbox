@@ -14,7 +14,7 @@
     .col-md-6
       %h1 Newest Recipes
       - @recipes.each do |recipe|
-        - if recipe.approved == 1 && recipe.tags != '0'
+        - if recipe.approved == 1 && recipe.category_ids != '0'
           %p
             = image_tag recipe.recipe_img, class: 'microthumb'
             = link_to recipe.title, recipe_path(recipe)
