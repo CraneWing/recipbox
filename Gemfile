@@ -34,6 +34,7 @@ gem 'rmagick'
 
 # searching
 gem 'sunspot_rails', '~> 2.2.0'
+gem 'sunspot_solr'
 
 # time helper gems - tzinfo-data for Win and local_time
 # to conver UTC to user's local timezone. 

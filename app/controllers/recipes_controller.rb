@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
   
   def index
     @search = Recipe.solr_search do
-       fulltext params[:search]
+      keywords params[:search]
     end
     @recipes = @search.results
   end

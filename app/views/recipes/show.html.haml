@@ -23,8 +23,6 @@
     %p
       %strong Tagged:
       - get_recipe_tags(@recipe.tags)
-      - @tagged.each do |key, value|
-          &bull;
-          %a{:href => key}= value
+      = @tagged
       %p#print-link= link_to 'Print Recipe', '#', onclick: 'printPage()', class: 'btn btn-default btn-sm'
         
