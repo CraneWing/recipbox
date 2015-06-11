@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   include RecipesHelper
-  before_action authenticate_user!, only: [:new, :edit]
+  before_action :authenticate_user!, only: [:new, :edit]
   
   def index
     if params[:search]
@@ -27,8 +27,8 @@ class RecipesController < ApplicationController
   
   def show
     @recipe = Recipe.find(params[:id])
-    @user = User.joins(:recipe).where(:recipe => {:user_id => :user.id})
-   #@categories = Recipe.joins("left outer join recipes_categories on recipe.id = recipes_categories.recipe_id").joins("right outer join categories on category.id = recipes_categories.category_id)
+    @user = User.where("id = ?", @recipe.user_id)
+    @categories = @recipe.categories.includes(:recipes_categories)
   end
   
   def create

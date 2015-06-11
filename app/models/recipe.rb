@@ -1,8 +1,9 @@
 class Recipe < ActiveRecord::Base
    belongs_to :user
+   has_many :recipes_categories
    has_many :categories, through: :recipes_categories
   
-   delegate :user_id, to: :user
+   delegate :username, to: :user
    
    scope :unapproved, proc { where(:approved => 0) }
    scope :untagged, proc { where(:category_ids => 0) }

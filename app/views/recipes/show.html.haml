@@ -22,8 +22,6 @@
     .clearfix
     %p
       %strong Tagged:
-      - @categories.each do |category|
-        &bull;
-        %a{:href => "categories/#{key}"}= value 
-      %p#print-link= link_to 'Print Recipe', '#', onclick: 'printPage()', class: 'btn btn-default btn-sm'
+      = @categories
+        
         
