@@ -1,6 +1,9 @@
 = title('The Forum')
 .container
   .well
+    %p.pull-right
+      %a=link_to '[Home]', root_path
+    %br/
     %p
       %strong Welcome to our forum! Post questions to fellow cooks and food enthusiasts in the topic areas below. You may browse topics and posts, but if you want to add a post or reply, you must
       = link_to 'register for an account', new_user_registration_path
@@ -11,14 +14,10 @@
     %p
       We do have a few rules to keep this forum as a friendly place to truly exchange tips, ideas, experiences and suggestions:
     %ul
-      %li
-        Be respectful and courteous to your fellow cooks: profanity, flaming, trolling, name calling  and the like will not be tolerated.
-      %li
-        Moderator will screen posts and comments for appropriateness. User will be informed by email of any posts found to be in violation of our rules. Any post that appears to be spam will be deleted outright.
-      %li
-        Repeat rule offenders face a ban from this forum.
-      %li
-        No promotion of commercial ventures, except in the off-topic section. These posts will be screened according to forum rules.
+      %li Be respectful and courteous to your fellow cooks: profanity, flaming, trolling, name calling  and the like will not be tolerated.
+      %li Moderator will screen posts and comments for appropriateness. User will be informed by email of any posts found to be in violation of our rules. Any post that appears to be spam will be deleted outright.
+      %li Repeat rule offenders face a ban from this forum.
+      %li No promotion of users' commercial ventures, except in the off-topic section. These posts will be screened according to forum rules. Exception is Dining Days, where you may recommend favorite restaurants in your area.
     
   .panel.panel-info
     - @topics.each do |topic|

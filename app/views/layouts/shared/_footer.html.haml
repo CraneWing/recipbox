@@ -3,13 +3,10 @@
     .row
       .col-md-6
         %ul
-          %li
-            %a{:href => "#"} Search Recipes
-          %li
-            %a{:href => "#"} All Recipes
           %li= link_to 'About Us', pages_about_path
-          %li
-            %a{:href => "#"} Privacy Policy
+          %li= link_to 'Privacy Policy', pages_privacy_path
+          %li= link_to 'Recipes/Search', recipes_path
+          %li= link_to 'Forums', forums_path
       .col-md-6.pull-right#social
         %ul
           %li

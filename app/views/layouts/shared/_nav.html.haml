@@ -10,15 +10,7 @@
     #navbar.navbar-collapse.collapse
       %ul.nav.navbar-nav
         %li= link_to '<i class="icon-stockpot"></i> Home'.html_safe, root_path
-        %li.dropdown
-          %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            %i.icon-pear
-            Actions
-            %span.caret
-          %ul.dropdown-menu
-            %li
-              %a{:href => "#"} All Recipes
-            %li= link_to 'Search Recipes'.html_safe, recipes_path
+        %li= link_to '<i class="icon-pear"></i> Recipes'.html_safe, recipes_path
         %li= link_to '<i class="icon-ladle"></i> About'.html_safe, pages_about_path
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}

@@ -1,4 +1,4 @@
 class Category < ActiveRecord::Base
-   has_many :recipes, through: :recipes_categories
-   has_many :recipes_categories
+   has_many :category_recipes
+   has_many :recipes, through: :category_recipes
 end

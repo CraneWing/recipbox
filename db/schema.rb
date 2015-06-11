@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150610202556) do
+ActiveRecord::Schema.define(version: 20150611140020) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 191, default: "", null: false
@@ -32,7 +32,12 @@ ActiveRecord::Schema.define(version: 20150610202556) do
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "categories", force: :cascade do |t|
-    t.string "name", limit: 191, default: "", null: false
+    t.string "name", limit: 191, null: false
+  end
+
+  create_table "category_recipes", id: false, force: :cascade do |t|
+    t.integer "category_id", limit: 4
+    t.integer "recipe_id",   limit: 4
   end
 
   create_table "comments", force: :cascade do |t|
@@ -52,35 +57,23 @@ ActiveRecord::Schema.define(version: 20150610202556) do
     t.datetime "updated_at",               null: false
   end
 
-  create_table "recipe_categories", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "recipes", force: :cascade do |t|
-    t.string   "title",       limit: 191,   default: ""
+    t.string   "title",       limit: 191
     t.text     "ingredients", limit: 65535
     t.text     "steps",       limit: 65535
-    t.text     "comments",    limit: 65535
-    t.string   "recipe_img",  limit: 191
     t.integer  "user_id",     limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.string   "recipe_img",  limit: 191
+    t.text     "comments",    limit: 65535
     t.integer  "approved",    limit: 1,     default: 0
-  end
-
-  create_table "recipes_categories", force: :cascade do |t|
-    t.integer  "recipe_id",   limit: 4
-    t.integer  "category_id", limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "topics", force: :cascade do |t|
     t.string   "title",       limit: 191
     t.text     "description", limit: 65535
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -99,9 +92,9 @@ ActiveRecord::Schema.define(version: 20150610202556) do
     t.string   "first_name",             limit: 45
     t.string   "last_name",              limit: 45
     t.string   "username",               limit: 30
+    t.string   "avatar",                 limit: 191
     t.string   "location",               limit: 191
     t.text     "profile",                limit: 65535
-    t.string   "avatar",                 limit: 191
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

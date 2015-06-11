@@ -26,5 +26,5 @@ Rails.application.routes.draw do
 
   get 'pages/about' => 'pages#about'
   get 'pages/search/:q' => 'recipes#index'
-  
+  get 'pages/privacy' => 'pages#privacy'
 end

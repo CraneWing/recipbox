@@ -27,8 +27,7 @@ class RecipesController < ApplicationController
   
   def show
     @recipe = Recipe.find(params[:id])
-    @user = User.where("id = ?", @recipe.user_id)
-    @categories = @recipe.categories.includes(:recipes_categories)
+    @categories = Category.joins(:category_recipes).where("category_recipes.recipe_id = ?", @recipe.id)
   end
   
   def create

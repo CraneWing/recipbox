@@ -34,6 +34,10 @@ body {
     font-family: 'kaushanscript', sans-serif;
   }
   
+  h1 {
+    padding: 4px 0;
+  }
+  
   p, a, ul {
     font-family: 'Arimo', serif;
   }
@@ -67,8 +71,13 @@ body {
   }
   
   .forms-row, .row-custom {
-    padding: 10px 15% 25px 15%;
+    padding: 10px 15% 40px 15%;
   }
+  
+  .med-thumb {
+        width: 60px;
+        height: 60px;
+    }
   
   .jumbotron {
     

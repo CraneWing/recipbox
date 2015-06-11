@@ -1,12 +1,11 @@
 class Recipe < ActiveRecord::Base
    belongs_to :user
-   has_many :recipes_categories
-   has_many :categories, through: :recipes_categories
-  
+   has_many :category_recipes
+   has_many :categories, through: :category_recipes
+   
    delegate :username, to: :user
    
    scope :unapproved, proc { where(:approved => 0) }
-   scope :untagged, proc { where(:category_ids => 0) }
    
    searchable do
       text :title, :boost => 5

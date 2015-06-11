@@ -2,3 +2,28 @@
 
 .container
   .row.row-custom
+    %h1
+      =@category.name
+      Recipes
+      
+    - if @recipes.blank?
+      %p
+        There are no recipes in this category yet.
+      - if user_signed_in?
+        %p
+          = link_to 'Add a Recipe!', new_recipe_path
+      - else
+        %p
+          = link_to 'Login', new_user_session_path
+          or
+          = link_to 'Sign Up', new_user_registration_path
+          to add a recipe!
+    - else
+      %table.table.recipe-list
+        - @recipes.each do |recipe|
+          %tr.row
+            %td.col-sm-6
+              %p.r-title= recipe.title
+            %td.col-sm-6
+              = link_to recipe_path(recipe) do
+                = image_tag recipe.recipe_img.url(:thumb), class: "med-thumb"

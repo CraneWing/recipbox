@@ -27,11 +27,18 @@
             margin-top: 2px;
             padding-bottom: 8px;
         }
+        
+        a {
+            color: #000;
+          &:hover {
+            text-decoration: none;
+            color: #006dcc;
+          }
+        }
     }
   
     .food-col-i {
         font-size: 50px;
-        
     }
     
     .microthumb {

@@ -17,22 +17,28 @@
         %a{:href => "recipes/#{recipe.id}"}= recipe.title
         %br/
   %h2.search-head Or Click These Popular Categories!
-  .row
+  .row.popular-cat
     .col-md-4.food-col
-      %i.icon-spaghetti2.food-col-i
+      %a{:href => "categories/22"}
+        %i.icon-spaghetti2.food-col-i
       %h3 Dinners
     .col-md-4.food-col
-      %i.icon-tacosalad.food-col-i
+      %a{:href => "categories/12"}
+        %i.icon-tacosalad.food-col-i
       %h3 Side Dishes
     .col-md-4.food-col
-      %i.icon-salad.food-col-i
+      %a{:href => "categories/13"}
+        %i.icon-salad.food-col-i
       %h3 Salads
     .col-md-4.food-col
-      %i.icon-chickenwhole.food-col-i
+      %a{:href => "categories/11"}
+        %i.icon-chickenwhole.food-col-i
       %h3 Entrees
     .col-md-4.food-col
-      %i.icon-vegbasket.food-col-i
+      %a{:href => "categories/23"}
+        %i.icon-vegbasket.food-col-i
       %h3 Vegetable Dishes
     .col-md-4.food-col
-      %i.icon-cakeslice.food-col-i
+      %a{:href => "categories/14"}
+        %i.icon-cakeslice.food-col-i
       %h3 Desserts
