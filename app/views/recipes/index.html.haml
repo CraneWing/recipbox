@@ -2,6 +2,14 @@
 
 .container
   .row.row-custom
+    %h1 Featured Recipe
+    .col-md-4
+      - featured_recipe
+      %p#featured-header= link_to @recipe.title, recipe_path(@recipe)
+    .col-md-4
+      = image_tag(@recipe.recipe_img.url(:medium))
+  %hr/
+  .row.row-custom
     %h2.search-head Search Recipes
     = form_tag recipes_path, method: :get, class: "forms" do
       = text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search recipes'
@@ -16,29 +24,7 @@
       - @recipes.each do |recipe|
         %a{:href => "recipes/#{recipe.id}"}= recipe.title
         %br/
-  %h2.search-head Or Click These Popular Categories!
-  .row.popular-cat
-    .col-md-4.food-col
-      %a{:href => "categories/22"}
-        %i.icon-spaghetti2.food-col-i
-      %h3 Dinners
-    .col-md-4.food-col
-      %a{:href => "categories/12"}
-        %i.icon-tacosalad.food-col-i
-      %h3 Side Dishes
-    .col-md-4.food-col
-      %a{:href => "categories/13"}
-        %i.icon-salad.food-col-i
-      %h3 Salads
-    .col-md-4.food-col
-      %a{:href => "categories/11"}
-        %i.icon-chickenwhole.food-col-i
-      %h3 Entrees
-    .col-md-4.food-col
-      %a{:href => "categories/23"}
-        %i.icon-vegbasket.food-col-i
-      %h3 Vegetable Dishes
-    .col-md-4.food-col
-      %a{:href => "categories/14"}
-        %i.icon-cakeslice.food-col-i
-      %h3 Desserts
+  %hr/
+  .row.row-custom
+    %h2.search-head All Categories
+  

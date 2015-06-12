@@ -27,8 +27,7 @@
   // excludes main dropdown links.
   $(document).ready(function() {
      $('a, li > a').on('click', function() {
-        
-            var randomImgStyle = "<style> .jumbotron { background-image: url(#{image_url 'site-img/food-image' + rand(37).to_s + '.jpg'}) !important; } </style>"
+            var randomImgStyle = "<style> .jumbotron { background-image: url(#{image_url 'site-img/food-image' + (1 + rand(41)).to_s + '.jpg'}) !important; } </style>"
             $('html > head').append(randomImgStyle);
             $('.jumbotron').fadeIn(500);  
         

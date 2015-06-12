@@ -19,6 +19,11 @@ Rails.application.routes.draw do
   resources :topics do
     resources :posts
   end
+  
+  get 'blog' => 'blog#index'
+  resources :blog_posts do
+    resources :blog_comments
+  end
 
    
   # static pages 
