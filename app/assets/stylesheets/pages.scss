@@ -44,7 +44,18 @@
     .microthumb {
         height: 45px;
         width: 45px;
-        padding-right: 5px;
+        
+        img {
+           width: 100%; 
+        }
+    }
+    
+    .text-block {
+        padding-left: 15px;
+    }
+    
+    .microthumb, .text-block {
+        float: left;
     }
     
 /** dynamic views **/

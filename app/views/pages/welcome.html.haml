@@ -10,26 +10,36 @@
       %h2 2. Share
       %p Offer food enthusiasts a platform on which they can feature their own recipes. Register today to upload and share your favorite culinary creations!
   %hr
-  .row
+  .row.row-custom
     .col-md-6
       %h1 Newest Recipes
       - @recipes.each do |recipe|
         - if recipe.approved == 1
           %p
           - if recipe.recipe_img.blank? || recipe.recipe_img == 'dinner-plate'
-            = image_tag "fallback/dinner-plate.png", class: "microthumb"
+            .microthumb
+              = image_tag "fallback/dinner-plate.png"
           - else
-            = image_tag recipe.recipe_img.url(:thumb), class: "microthumb"
+            .microthumb
+              = image_tag recipe.recipe_img.url(:thumb), class: "microthumb"
+          .text-block
             = link_to recipe.title, recipe_path(recipe)
+            %br/
             Added #{timeago(recipe.created_at)}
+          .clearfix  
     .col-md-6
       %h1 Newest Members
       - @users.each do |user|
         %p
           - if user.avatar.blank? || user.avatar == 'avatar-default.jpg'
-            = image_tag "fallback/avatar-default.jpg", class: "microthumb"
+            .microthumb
+              = image_tag "fallback/avatar-default.jpg"
           - else
-            = image_tag 'avatar-test/' + user.avatar, class: "microthumb"
-          = link_to user.username, user_path(user)
-          Joined #{timeago(user.created_at)}
+            .microthumb
+              = image_tag 'avatar-test/' + user.avatar, class: "microthumb"
+          .text-block
+            = link_to user.username, user_path(user)
+            %br/
+            Joined #{timeago(user.created_at)}
+          .clearfix
       
