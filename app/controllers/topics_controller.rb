@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
   
   def show
     @topic = Topic.find(params[:id])
-    @posts = Post.where("topic_id = ?", @topic.id).order('created_at desc')
+    @posts = Post.where(topic_id: @topic.id).order('created_at desc')
     @posts = @posts.paginate(page: params[:page], per_page: 12)
   end
   

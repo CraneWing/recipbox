@@ -19,7 +19,7 @@
               %tr
                 %td
                   %h5
-                    = link_to post.title, topic_post_url(@topic, post)
+                    = link_to post.title, post_path(post)
                   = truncate(strip_tags(post.body).html_safe, omission: '...', separator: ' ', length: 120)
                   %br/
                   %p
@@ -31,6 +31,6 @@
         - else
           %p
             There are no posts in this category yet.
-        = link_to 'New Post', new_topic_post_path(@topic, @post), class: 'btn btn-primary pull-right'
+        = link_to 'New Post', new_post_path(@post), class: 'btn btn-primary pull-right'
         
     

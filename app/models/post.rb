@@ -4,4 +4,5 @@ class Post < ActiveRecord::Base
    belongs_to :user
    
    delegate :username, :avatar, :location, to: :user
+   delegate :topic_id, to: :topic
 end

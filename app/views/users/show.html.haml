@@ -2,41 +2,8 @@
 .container
   .row.row-custom.profile
     .col-md-6
-      %h2 User Profile
-      %p
-        %strong Username:
-        = @user.username
-        %br/
-        %strong Joined:
-        = local_time(@user.created_at, '%d %B %Y')
-      %p
-        %strong Name:
-        - if @user.first_name.blank? && @user.last_name.blank?
-          No name given
-        - else
-          = @user.first_name
-          = @user.last_name
-      - if !@user.location.blank?
-        %p
-          %strong Location:
-          = @user.location
-      - if !@user.profile.blank?
-        %p
-          %strong About me:
-          = @user.profile
-      %p
-        %strong Recipes submitted
-      - if @recipes.blank?
-        %p User has not submitted any recipes yet.
-      - else
-        %ul
-          - @recipes.each do |recipe|
-            %li
-              = link_to recipe.title, recipe_path(recipe)
-              - if recipe.tags == '0' || recipe.approved == 0
-                %span.pending Approval Pending
+      = render 'users/user_profile'
+      = render 'users/user_recipe'
     .col-md-6
-      - if @user.avatar.blank? || @user.avatar == 'avatar-default.jpg'
-        = image_tag "fallback/avatar-default.jpg"
-      - else
-        = image_tag('avatar-test/' + @user.avatar.to_s)
+      = render 'users/user_posts'
+      

@@ -13,19 +13,16 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update, :delete]
   resources :forums, only: [:index]
   resources :comments, only: [:edit, :update, :delete]
-  resources :posts do
+  resources :posts, only: [:create, :new, :show] do
     resources :comments, only: [:create, :new, :show]
   end
-  resources :topics do
-    resources :posts
-  end
+  resources :topics, only: [:show]
   
   get 'blog' => 'blog#index'
   resources :blog_posts do
     resources :blog_comments
   end
 
-   
   # static pages 
   root 'pages#welcome'
 

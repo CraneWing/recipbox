@@ -9,6 +9,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @recipes = @user.recipes
+    @posts = @user.posts
+    @comments = @user.comments
   end
   
   def edit
@@ -48,5 +50,4 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:email, :password, :first_name, :last_name, :username, :location, :profile, :avatar, :crop_x, :crop_y, :crop_w, :crop_h)
     end
-
 end

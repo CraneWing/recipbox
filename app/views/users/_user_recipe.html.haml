@@ -1,0 +1,13 @@
+%p
+  %strong
+    Recipes submitted
+    - if @recipes.blank?
+      %p User has not submitted any recipes yet.
+    - else
+      %ul
+        - @recipes.each do |recipe|
+          %li
+            = link_to recipe.title, recipe_path(recipe)
+            - if recipe.approved == 0
+              %span.pending
+                Approval Pending

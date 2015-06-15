@@ -1,0 +1,23 @@
+%h3 User Posts
+- if @posts.count > 0
+  %p
+    %strong
+      Number of posts:
+    = @posts.count
+  - @posts.each do |post|
+    %p= link_to post.title, post_path(post)
+    %p= truncate(post.body, omission: '...', separator: ' ', length: 65)
+- else
+  %p User has not submitted any posts yet.
+%h3 User Comments
+- if @comments.count > 0
+  %p
+    %strong
+      Number of comments:
+    = @comments.count
+  - @comments.each do |comment|
+    %p= link_to truncate(comment.body, omission: '...', separator: ' ', length: 65), '/posts/' + comment.post_id.to_s
+   
+    
+- else
+  %p User has not submitted any comments yet.

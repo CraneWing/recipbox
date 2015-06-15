@@ -16,7 +16,7 @@
       %tr
         %td.col-md-3.info.post-col-left
           %strong
-            = @post.username
+            = link_to @post.username, '/users/' + @post.user_id.to_s
           %br/
           - if @post.avatar == "avatar-default.jpg" || @post.avatar.blank?
             = image_tag "fallback/avatar-default.jpg", class: 'microthumb'
@@ -34,8 +34,7 @@
             %br/
             = @post.user.location
         %td.col-md-9.post-col-right
-          %p
-            %strong= @post.title
+          %h5= @post.title
           %p
             = emojify(@post.body.html_safe)
           %em
@@ -44,7 +43,7 @@
         - @comments.each do |comment|
           %tr
             %td.col-md-3.info.post-col-left
-              %strong= comment.username
+              %strong= link_to comment.username, '/users/' + comment.user_id.to_s
               %br/
               - if comment.avatar == "avatar-default.jpg" || comment.avatar.blank?
                 = image_tag "fallback/avatar-default.jpg", class: 'microthumb'
