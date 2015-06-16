@@ -3,6 +3,8 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
   
   def index
+    @categories = Category.all
+    
     if params[:search]
       empty_search = false
     else

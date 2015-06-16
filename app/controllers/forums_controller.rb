@@ -17,7 +17,11 @@ class ForumsController < ApplicationController
         @search = Sunspot.search [Post, Comment] do
            keywords params[:search]
         end
-        @search = @search.results
+        results = @search.results
+        redirect_to forum_search
       end
+   end
+   
+   def forum_search
    end
 end

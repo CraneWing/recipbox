@@ -10,7 +10,7 @@
       = image_tag(@recipe.recipe_img.url(:medium))
   %hr/
   .row.row-custom
-    %h2.search-head Search Recipes
+    %h1.search-head Search Recipes
     = form_tag recipes_path, method: :get, class: "forms" do
       = text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search recipes'
       %br/
@@ -26,5 +26,10 @@
         %br/
   %hr/
   .row.row-custom
-    %h2.search-head All Categories
-  
+    %h1 All Categories
+    %table
+      - @categories.in_groups_of(3, false) do |group|
+        %tr
+          - group.each do |category|
+            %td.col-md-4
+              %h4=link_to category.name, category_path(category)

@@ -1,0 +1,22 @@
+%h2 User Profile
+%p
+  %strong Username:
+  = @user.username
+  %br/
+  %strong Joined:
+  = local_time(@user.created_at, '%d %B %Y')
+%p
+  %strong Name:
+  - if @user.first_name.blank? && @user.last_name.blank?
+    No name given
+  - else
+    = @user.first_name
+    = @user.last_name
+- if !@user.location.blank?
+  %p
+    %strong Location:
+    = @user.location
+- if !@user.profile.blank?
+  %p
+    %strong About me:
+    = @user.profile

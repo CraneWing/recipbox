@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   end
   resources :topics, only: [:show]
   
+  match 'forums/search', to: 'forums#search', via: :get
+  
   get 'blog' => 'blog#index'
   resources :blog_posts do
     resources :blog_comments

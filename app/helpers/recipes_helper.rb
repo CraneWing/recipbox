@@ -16,7 +16,7 @@ module RecipesHelper
       if Recipe.exists?(recipe_id)
          @recipe = Recipe.find(recipe_id)
       else
-         recipe_id = 1 + rand(recipe_count)
+         @recipe = Recipe.find(1 + rand(recipe_count))
       end
    end
 end

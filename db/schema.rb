@@ -57,7 +57,12 @@ ActiveRecord::Schema.define(version: 20150612192127) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name", limit: 191, null: false
+    t.string "name", limit: 191, default: "", null: false
+  end
+
+  create_table "category_recipe", id: false, force: :cascade do |t|
+    t.integer "category_id", limit: 4
+    t.integer "recipe_id",   limit: 4
   end
 
   create_table "category_recipes", id: false, force: :cascade do |t|
@@ -97,8 +102,8 @@ ActiveRecord::Schema.define(version: 20150612192127) do
   create_table "topics", force: :cascade do |t|
     t.string   "title",       limit: 191
     t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
@@ -117,9 +122,9 @@ ActiveRecord::Schema.define(version: 20150612192127) do
     t.string   "first_name",             limit: 45
     t.string   "last_name",              limit: 45
     t.string   "username",               limit: 30
-    t.string   "avatar",                 limit: 191
     t.string   "location",               limit: 191
     t.text     "profile",                limit: 65535
+    t.string   "avatar",                 limit: 191
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

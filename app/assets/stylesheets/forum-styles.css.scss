@@ -5,25 +5,22 @@
 header {
     width: 100%;
     background-color: #f4f4f4;
-    padding-top: 10px;
+    height: 60px;
+    
     h1 {
-        padding: 6px 0 2px 30px;
+        float: left;
+        margin-top: 8px;
+    }
+    
+    form {
+        margin-top: 12px;
     }
 }
-
-#forum-welcome {
-    padding: 12px 0 8px 0;
-}
-
 
 .forms-row, .row-custom, .panel-forum {
     padding: 10px 10% 25px 10%;
   }
   
-h1 {
-    padding-left: 70px
-}
-
 h5 {
     font-size: 15px;
 }
@@ -48,4 +45,8 @@ h5 {
         font-size: 11px;
         line-height: 0.2px;
     }
+}
+
+#forum-body {
+    padding-top: 15px;
 }

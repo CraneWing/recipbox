@@ -4,10 +4,13 @@
     = render 'layouts/forums_shared/head'
   %body
     %header
-      %h1 RecipeBox Forum
-      = form_tag forums_path, method: :get, class: "form-inline pull-right" do
-        = text_field_tag :search, params[:search], placeholder: 'Search Forum'
-        = submit_tag 'Search', class: "btn btn-info"
+      .container
+        .row
+          %h1 RecipeBox Forum
+          = form_tag "forums/search", method: :get, id: 'forum_search', class: "form-inline pull-right" do
+            = text_field_tag :search, params[:search], placeholder: 'Search Forum'
+            = submit_tag 'Search', class: "btn btn-info"
+    .container#forum-body
     = render 'layouts/shared/messages'  
     = yield
   
