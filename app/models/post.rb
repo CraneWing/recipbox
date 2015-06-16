@@ -4,8 +4,7 @@ class Post < ActiveRecord::Base
    belongs_to :user
    
    searchable do
-      text :title
-      text :body
+      text :title, :body
    end
    
    delegate :username, :avatar, :location, to: :user
