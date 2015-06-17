@@ -6,5 +6,6 @@ class Comment < ActiveRecord::Base
    
    searchable do
       text :body
+      time :created_at
    end
 end

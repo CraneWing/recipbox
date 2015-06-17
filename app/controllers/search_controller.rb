@@ -3,11 +3,13 @@ class SearchController < ApplicationController
    
    def index
       @search = Sunspot.search [Post, Comment] do
-         keywords params[:search]
+         fulltext params[:search]
+         order_by :created_at, :desc
+         paginate :page => params[:page], :per_page => 25
       end
       
       @results = @search.results
-      
+
       respond_to do |format|
          format.html { render 'index'}
       end

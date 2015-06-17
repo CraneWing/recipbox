@@ -21,7 +21,8 @@ class User < ActiveRecord::Base
   
   validates :email, presence: true,
     uniqueness: { case_sensitive: false }
-  
+    
+  validates :username, uniqueness: true, if: -> { self.username.present? }
   validates :username, presence: true,
       length: {maximum: 191},
       format: { with: /\A[a-zA-Z0-9\-\.\_]*\z/,

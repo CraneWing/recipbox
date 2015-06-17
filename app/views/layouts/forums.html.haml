@@ -6,7 +6,7 @@
     %header
       .container
         .row
-          %h1 RecipeBox Forum
+          %h1= link_to 'RecipeBox Forum', forums_path
           = form_tag search_index_path, method: :get, class: "form-inline pull-right" do
             = text_field_tag :search, params[:search], placeholder: 'Search Forum'
             = submit_tag 'Search', class: "btn btn-info"

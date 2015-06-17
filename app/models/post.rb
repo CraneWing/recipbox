@@ -5,6 +5,7 @@ class Post < ActiveRecord::Base
    
    searchable do
       text :title, :body
+      time :created_at
    end
    
    delegate :username, :avatar, :location, to: :user
