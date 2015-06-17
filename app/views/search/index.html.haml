@@ -1,15 +1,17 @@
-=title('Search Results')
 .container
   .row
     %ol.breadcrumb.pull-right
       %li= link_to 'Home', root_path
-      %li Search 
-    %h2 Search Results
+      %li Search
+    %h2 Search Results in Posts
     - @results.each do |result|
       - case result.class.name
-      - when 'Post'
-        = result.title
-        = truncate(result.body.html_safe, omission: '...', separator: ' ', length: 100)
-      - when 'Comment'
-        = truncate(result.body.html_safe, omission: '...', separator: ' ', length: 100)
+        - when 'Post'
+        %p
+          = link_to "Post " + (result.id).to_s, '/posts/' + (result.id).to_s
+          \: #{result.title}
+        - when 'Comment'
+        %p
+          = link_to "Comment on Post " + (result.post_id).to_s, '/posts/' + (result.post_id).to_s
+          \: #{truncate(result.body, omission: '...', separator: ' ', length: 65).html_safe}
       

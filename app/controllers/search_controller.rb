@@ -3,9 +3,9 @@ class SearchController < ApplicationController
    
    def index
       @search = Sunspot.search [Post, Comment] do
-         fulltext params[:search]
-         paginate :page => params[:page], :per_page => 15
+         keywords params[:search]
       end
+      
       @results = @search.results
       
       respond_to do |format|
