@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  post '/rate' => 'rater#create', :as => 'rate'
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   devise_for :admins, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

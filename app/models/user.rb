@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :recipes
+  has_many :reviews
   has_many :blog_comments, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy

@@ -1,0 +1,65 @@
+=title(@recipe.title)
+.container
+  .row.row-custom
+    #recipe-info
+      .col-md-8
+        %h3=@recipe.title
+        %hr/
+        %p
+          Submitted by
+          = link_to @recipe.username, user_path(@recipe.user)
+        %p= @recipe.comments
+        %hr/
+        %table.table.table-bordered.ingredients
+          %thead
+            %tr.active
+              %th Prep 
+              %th Cook 
+              %th Yield
+          %tbody
+            %tr
+              %td= @recipe.prep
+              %td= @recipe.cook
+              %td= @recipe.yield
+        %p.recipe-head
+          Ingredients
+        %p
+          = split_ingredients(@recipe.ingredients)
+        %p.recipe-head
+          Preparation
+        = @recipe.steps.html_safe
+        %p
+          Tagged:
+          - if @categories.count >= 4
+            - @categories.in_groups_of(4, false) do |group|
+              - group.each do |category|
+                &bull;
+                = link_to category.name, category_path(category)
+          - else
+            - @categories.each do |category|
+              &bull;
+              = link_to category.name, category_path(category)
+        %br/
+        
+      .col-md-4
+        - if @recipe.recipe_img.blank? || @recipe.recipe_img == "dinner-plate"
+          = image_tag "fallback/dinner-plate.png"
+        - else
+          = image_tag @recipe.recipe_img.url(:medium)
+        %br/
+        %br/
+        %p.recipe-head
+          Recipe Reviews
+        - if @reviews.count != 0
+          - @reviews.each do |review|
+            :erb
+              <%= show_stars(review.stars) %>
+            %p
+            =review.username
+            said:
+            %p= review.body
+        - else
+          %p There are no reviews for this recipe yet. Have you tried this recipe and want to reivew it? Sign up or login and add your voice!
+    .clearfix
+      %p#print-link
+        = link_to 'Print Recipe', "#", onclick: "printPage()", class: "btn btn-default btn-sm"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150612192127) do
+ActiveRecord::Schema.define(version: 20150618165815) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 191, default: "", null: false
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 20150612192127) do
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
+
+  create_table "average_caches", force: :cascade do |t|
+    t.integer  "rater_id",      limit: 4
+    t.integer  "rateable_id",   limit: 4
+    t.string   "rateable_type", limit: 191
+    t.float    "avg",           limit: 24,  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "blog_comments", force: :cascade do |t|
     t.text     "body",       limit: 65535
@@ -57,12 +66,7 @@ ActiveRecord::Schema.define(version: 20150612192127) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name", limit: 191, default: "", null: false
-  end
-
-  create_table "category_recipe", id: false, force: :cascade do |t|
-    t.integer "category_id", limit: 4
-    t.integer "recipe_id",   limit: 4
+    t.string "name", limit: 191, null: false
   end
 
   create_table "category_recipes", id: false, force: :cascade do |t|
@@ -78,6 +82,14 @@ ActiveRecord::Schema.define(version: 20150612192127) do
     t.datetime "updated_at",               null: false
   end
 
+  create_table "overall_averages", force: :cascade do |t|
+    t.integer  "rateable_id",   limit: 4
+    t.string   "rateable_type", limit: 191
+    t.float    "overall_avg",   limit: 24,  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string   "title",      limit: 191
     t.text     "body",       limit: 65535
@@ -86,6 +98,31 @@ ActiveRecord::Schema.define(version: 20150612192127) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
+
+  create_table "rates", force: :cascade do |t|
+    t.integer  "rater_id",      limit: 4
+    t.integer  "rateable_id",   limit: 4
+    t.string   "rateable_type", limit: 191
+    t.float    "stars",         limit: 24,  null: false
+    t.string   "dimension",     limit: 191
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rates", ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type", using: :btree
+  add_index "rates", ["rater_id"], name: "index_rates_on_rater_id", using: :btree
+
+  create_table "rating_caches", force: :cascade do |t|
+    t.integer  "cacheable_id",   limit: 4
+    t.string   "cacheable_type", limit: 191
+    t.float    "avg",            limit: 24,  null: false
+    t.integer  "qty",            limit: 4,   null: false
+    t.string   "dimension",      limit: 191
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rating_caches", ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
 
   create_table "recipes", force: :cascade do |t|
     t.string   "title",       limit: 191
@@ -97,13 +134,25 @@ ActiveRecord::Schema.define(version: 20150612192127) do
     t.string   "recipe_img",  limit: 191,   default: "dinner-plate"
     t.text     "comments",    limit: 65535
     t.integer  "approved",    limit: 1,     default: 0
+    t.string   "prep",        limit: 191
+    t.string   "cook",        limit: 191
+    t.string   "yield",       limit: 191
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text     "body",       limit: 65535
+    t.integer  "stars",      limit: 4
+    t.integer  "user_id",    limit: 4
+    t.integer  "recipe_id",  limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "topics", force: :cascade do |t|
     t.string   "title",       limit: 191
     t.text     "description", limit: 65535
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -122,9 +171,9 @@ ActiveRecord::Schema.define(version: 20150612192127) do
     t.string   "first_name",             limit: 45
     t.string   "last_name",              limit: 45
     t.string   "username",               limit: 30
+    t.string   "avatar",                 limit: 191
     t.string   "location",               limit: 191
     t.text     "profile",                limit: 65535
-    t.string   "avatar",                 limit: 191
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

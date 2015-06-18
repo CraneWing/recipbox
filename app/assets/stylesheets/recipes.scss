@@ -1,3 +1,19 @@
+.recipe-head {
+   font-size: 16px;
+   font-weight: bold;
+}
+
+.ingredients {
+   text-align: center;
+   width: 75%;
+   thead th {
+      text-align: center;
+   }
+   tbody tr {
+      border-top: none !important;
+   }
+}
+
 #print-link {
    margin-top: 15px;
 }
