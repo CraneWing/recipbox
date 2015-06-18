@@ -3,15 +3,15 @@
   - when 'Post'
     %p
       = link_to "Post " + (result.id).to_s, '/posts/' + (result.id).to_s
-      \: #{truncate(result.title, omission: '...', separator: ' ', length: 60)}
+      \: #{truncate(result.title, omission: '...', separator: ' ', length: 50)}
       %em
-        Posted 
-        = local_time(result.created_at, '%e %B %Y')
+        &mdash;Posted 
+        %strong= local_time(result.created_at, '%e %B %Y, %l:%M %P')
   - when 'Comment'
     %p
       = link_to "Comment on Post " + (result.post_id).to_s, '/posts/' + (result.post_id).to_s
-      \: #{truncate(result.body, omission: '...', separator: ' ', length: 60).html_safe}
+      \: #{truncate(result.body, omission: '...', separator: ' ', length: 50).html_safe}
       %em
-        Posted
-        = local_time(result.created_at, '%e %B %Y')
+        &mdash;Posted
+        %strong= local_time(result.created_at, '%e %B %Y, %l:%M %P')
 = will_paginate @results

@@ -11,6 +11,12 @@ class UsersController < ApplicationController
     @recipes = @user.recipes
     @posts = @user.posts
     @comments = @user.comments
+    
+    if URI(request.referer).path.include?("/posts/")
+      render layout: 'forums'
+    else
+      render layout: 'application'
+    end
   end
   
   def edit
