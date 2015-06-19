@@ -60,6 +60,10 @@ body {
     }
   }
   
+    .small-subhead {
+       font-size: 16px;
+       font-weight: bold;
+    }
   .forms {
     .form-control {
         border-radius: 0 !important;
@@ -67,6 +71,9 @@ body {
         &:focus {
             box-shadow: 0 1px 1px rgb(105, 120, 234) inset, 0 0 8px rgb(105, 120, 234);
         }
+    }
+    .num-input {
+        width: 20%;
     }
   }
   

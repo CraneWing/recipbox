@@ -1,0 +1,7 @@
+%br/
+= simple_form_for([@recipe, Review.new], html: { method: :post, class: "forms" }) do |f|
+  .form-row
+    = f.input :body, class: 'form-control', input_html: { :rows => 8 }, label: 'Your Review'
+  = f.input :stars, input_html: { min: 1, max: 5, class: "num-input" }, label: 'Rate recipe from 1 to 5'
+  = f.submit 'Submit', class: 'btn btn-primary'
+  %a= link_to 'Cancel', recipe_path(@recipe.id), class: 'btn btn-default'

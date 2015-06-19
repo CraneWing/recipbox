@@ -1,4 +1,4 @@
-= simple_form_for(@recipe, html: {method: :post, class: 'forms', multipart: true}) do |f|
+= simple_form_for(@recipe, html: { method: :post, class: 'forms', multipart: true} ) do |f|
   = f.input :title, required: true, class: 'form-control'
   = f.input :ingredients, class: 'form-control', required: true, placeholder: 'Separate each ingredient with a semicolon (;)', input_html: { :rows => 8 }
   = f.input :steps, class: 'form-control', required: true, input_html: { :rows => 8 }

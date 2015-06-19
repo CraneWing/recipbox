@@ -1,24 +1,35 @@
 require 'faker'
 
-350.times do
-   post = Post.create!(
-      topic_id: rand(1..9),
-      user_id: rand(1..155),
-      title: Faker::Lorem.sentence(rand(5..10)).chomp('.'),
-      body: Faker::Lorem.paragraphs(rand(1..4)).join('<br><br>'),
-      created_at: Faker::Time.between(1.year.ago, Time.now, :all)
+65.times do
+   review = Review.create!(
+       user_id: rand(1..155),
+       recipe_id: rand(1..14),
+       stars: rand(3..5),
+       body: Faker::Lorem.paragraphs(rand(1..3)).join('<br><br>'),
+       created_at: Faker::Time.between(1.year.ago, Time.now, :all)
    )
+   
 end
 
-
-950.times do
-   comment = Comment.create!(
-      post_id: rand(1..350),
-      user_id: rand(1..155),
-      body: Faker::Lorem.paragraphs(rand(1..4)).join('<br><br>'),
-      created_at: Faker::Time.between(1.year.ago, Time.now, :all)
-   )
-end
+#350.times do
+#   post = Post.create!(
+#      topic_id: rand(1..9),
+#      user_id: rand(1..155),
+#      title: Faker::Lorem.sentence(rand(5..10)).chomp('.'),
+#      body: Faker::Lorem.paragraphs(rand(1..4)).join('<br><br>'),
+#      created_at: Faker::Time.between(1.year.ago, Time.now, :all)
+#   )
+#end
+#
+#
+#950.times do
+#   comment = Comment.create!(
+#      post_id: rand(1..350),
+#      user_id: rand(1..155),
+#      body: Faker::Lorem.paragraphs(rand(1..4)).join('<br><br>'),
+#      created_at: Faker::Time.between(1.year.ago, Time.now, :all)
+#   )
+#end
 
 #155.times do
 #  user = User.create!(

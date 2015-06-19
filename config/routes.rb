@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   # user can see only profile page or page of all users
   # can view all recipes, their individual recipes, add recipe or edit
   # their existing recipes
-  resources :recipes
+  resources :recipes do
+    resources :reviews, only: [:index, :create, :new, :edit]
+  end
+  resources :reviews, only: [:show]
   resources :categories, only: [:show]
   resources :users, only: [:index, :show, :edit, :update, :delete]
   resources :forums, only: [:index]
@@ -18,7 +21,6 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :new, :show]
   end
   resources :topics, only: [:show]
-  
   resources :search, only: [:index]
   
   get 'blog' => 'blog#index'

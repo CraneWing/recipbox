@@ -18,16 +18,13 @@
           %li
             %a{:href => "#"}
               %i.icon-pinterest
-        %p
-        Icons from
-        %a{:href => "http://www.flaticon.com"} Flaticon
-        and are used under a creative commons license.
+        %p Copyright &copy;2015 the RecipeBox. All rights reserved.
 :javascript
   // generates random jumbotron background every time link clicked.
   // excludes main dropdown links.
   $(document).ready(function() {
      $('a, li > a').on('click', function() {
-            var randomImgStyle = "<style> .jumbotron { background-image: url(#{image_url 'jumbotron/food-image' + (1 + rand(41)).to_s + '.jpg'}) !important; } </style>"
+            var randomImgStyle = "<style> .jumbotron { background-image: url(#{image_url 'jumbotron/food-image' + (1 + rand(40)).to_s + '.jpg'}) !important; } </style>"
             $('html > head').append(randomImgStyle);
             $('.jumbotron').fadeIn(500);  
         

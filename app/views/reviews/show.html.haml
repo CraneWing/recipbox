@@ -1,0 +1,24 @@
+= title('User Review')
+.container
+  .row.row-custom
+    %p.small-subhead
+      Review of
+      = @review.title
+    .stars
+      - i = 0
+      - while i < @review.stars.to_i
+        = image_tag "star-full.png"
+        - i+=1
+      - j = 0
+      - open_star = 5 - @review.stars.to_i
+      - while j < open_star
+        = image_tag "star-gray.png"
+        - j+=1
+    = @review.body.html_safe
+    %br/
+    %strong
+      &mdash;
+      = @review.username
+    %br/
+    %p
+      = link_to 'Back', recipe_path(@review.recipe_id)

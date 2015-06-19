@@ -1,0 +1,6 @@
+- if @recipe.recipe_img.blank? || @recipe.recipe_img == "dinner-plate"
+  = image_tag "fallback/dinner-plate.png"
+- else
+  = image_tag @recipe.recipe_img.url(:medium)
+%br/
+%br/

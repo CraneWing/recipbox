@@ -1,7 +1,6 @@
 %br/
 = simple_form_for([@post, Comment.new]) do |f|
   .form-row
-    
     = f.input :body, as: :bootsy, class: 'form-control', input_html: { :rows => 8 }, label: 'Reply to post (formatting and emoji are supported!)'
   = f.submit 'Submit', class: 'btn btn-primary'
   %a= link_to 'Cancel', :back, class: 'btn btn-default'

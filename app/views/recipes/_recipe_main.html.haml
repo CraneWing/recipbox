@@ -1,0 +1,37 @@
+%h3=@recipe.title
+%hr/
+%p
+  Submitted by
+  = link_to @recipe.username, user_path(@recipe.user)
+%p= @recipe.comments
+%hr/
+%table.table.table-bordered.ingredients
+  %thead
+    %tr.active
+      %th Prep 
+      %th Cook 
+      %th Yield
+  %tbody
+    %tr
+      %td= @recipe.prep
+      %td= @recipe.cook
+      %td= @recipe.yield
+%p.small-subhead
+  Ingredients
+%p
+  = split_ingredients(@recipe.ingredients)
+%p.small-subhead
+  Preparation
+= @recipe.steps.html_safe
+%p
+  Tagged:
+  - if @categories.count >= 4
+    - @categories.in_groups_of(4, false) do |group|
+      - group.each do |category|
+        &bull;
+        = link_to category.name, category_path(category)
+  - else
+    - @categories.each do |category|
+      &bull;
+      = link_to category.name, category_path(category)
+%br/

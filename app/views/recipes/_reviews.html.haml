@@ -1,4 +1,4 @@
-%p.recipe-head
+%p.small-subhead
   Recipe Reviews
 - if @reviews.count != 0
   - @reviews.each do |review|
@@ -16,6 +16,11 @@
       = link_to review.username, user_path(review.user)
     said:
     %br/
-    = review.body
+    = truncate(strip_tags(review.body), omission: '...', separator: ' ', length: 85)
+    = link_to '[more]', review_path(review.id)
+    %br/
+    %br/
+  %p
+    = link_to 'See All Reviews', recipe_reviews_path(@recipe.id)
 - else
   %p There are no reviews for this recipe yet. Have you tried this recipe and want to reivew it? Sign up or login and add your voice!
