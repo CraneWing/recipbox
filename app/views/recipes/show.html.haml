@@ -2,7 +2,7 @@
 .container
   .row.row-custom
     #recipe-info
-      .col-md-8
+      .col-md-7
         %h3=@recipe.title
         %hr/
         %p
@@ -40,26 +40,14 @@
               &bull;
               = link_to category.name, category_path(category)
         %br/
-        
-      .col-md-4
+      .col-md-5
         - if @recipe.recipe_img.blank? || @recipe.recipe_img == "dinner-plate"
           = image_tag "fallback/dinner-plate.png"
         - else
           = image_tag @recipe.recipe_img.url(:medium)
         %br/
         %br/
-        %p.recipe-head
-          Recipe Reviews
-        - if @reviews.count != 0
-          - @reviews.each do |review|
-            :erb
-              <%= show_stars(review.stars) %>
-            %p
-            =review.username
-            said:
-            %p= review.body
-        - else
-          %p There are no reviews for this recipe yet. Have you tried this recipe and want to reivew it? Sign up or login and add your voice!
+        = render 'recipes/reviews'
     .clearfix
       %p#print-link
         = link_to 'Print Recipe', "#", onclick: "printPage()", class: "btn btn-default btn-sm"

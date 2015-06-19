@@ -41,9 +41,9 @@ module ApplicationHelper
    # display star icons on recipe reviews
    def show_stars(star_total)
       star_line = ''
-      star_total.to_i.times { star_line += '<img src="../app/assets/images/star-full.png">'}
+      star_total.to_i.times { star_line += '<%= img_tag "star-full.png" %> '}
       star_open = 5 - star_total.to_i
-      star_open.times { star_line += '<img src="../app/assets/images/star-open.png">'}
-      star_line = star_line.html_safe
+      star_open.times { star_line += '<%= img_tag "star-open.png" %> '}
+      star_line.html_safe
    end   
 end
