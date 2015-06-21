@@ -1,10 +1,10 @@
 =title(@recipe.title)
 .container
-  .row.row-custom
+  .row
     #recipe-info
-      .col-md-7
+      .col-md-6
         = render 'recipes/recipe_main'
-      .col-md-5
+      .col-md-6.img-col
         = render 'recipes/recipe_img'
     = render 'recipes/reviews'
     .clearfix

@@ -1,0 +1,8 @@
+%h2 Our Bloggers
+%hr/
+- @bloggers.each do |blogger|
+  .blogger
+    %h4= blogger.name
+    .blogger-image
+      = image_tag 'blogging/' + blogger.blogger_img
+    = blogger.bio.html_safe

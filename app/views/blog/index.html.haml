@@ -1,1 +1,7 @@
-#!/usr/bin/env ruby
+= title('The Blog')
+.container
+  .row
+    .col-md-8.posts
+      = render 'blog/blog_main'
+    .col-md-4
+      = render 'blog/blog_sidebar'

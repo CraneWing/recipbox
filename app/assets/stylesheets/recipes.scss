@@ -16,6 +16,43 @@
 .stars {
     padding: 5px 0;
 }
+
+#recipe-image-area {
+    img {
+        width: 60%;
+        text-align: center;
+    }
+    
+    ul {
+        list-style: none;
+        
+        li {
+            list-style: none;
+            border-radius: 50%;
+            height: 55px;
+            width: 55px;
+            background-color: #000;
+            display: inline-block;
+            
+            a {
+                text-decoration: none;
+                color: #fff;
+                font-size: 30px;
+                text-align: center;
+                
+                &:hover {
+                    color: SkyBlue;
+                }
+                
+                i {
+                    display: inline-block;
+                    padding: 12px;
+                }
+            }
+        }    
+    }
+}
+  
     
 .recipe-list td {
    padding: 5px !important;

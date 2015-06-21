@@ -1,0 +1,5 @@
+%br/
+= simple_form_for([@blog_post, BlogComment.new], html: { method: :post, class: "forms" }) do |f|
+  .form-row
+    = f.input :body, class: 'form-control', input_html: { :rows => 8 }, label: 'Your Comment'
+  = f.submit 'Submit', class: 'btn btn-primary'

@@ -1,15 +1,34 @@
 require 'faker'
 
-65.times do
-   review = Review.create!(
-       user_id: rand(1..155),
-       recipe_id: rand(1..14),
-       stars: rand(3..5),
-       body: Faker::Lorem.paragraphs(rand(1..3)).join('<br><br>'),
-       created_at: Faker::Time.between(1.year.ago, Time.now, :all)
+130.times do
+   blog_comment = BlogComment.create!(
+      blog_post_id: rand(1..18),
+      user_id: rand(1..155),
+      body: Faker::Lorem.paragraphs(rand(1..3)).join('<br><br>'),
+      created_at: Faker::Time.between(2.months.ago, Time.now, :all)
    )
-   
 end
+
+18.times do
+  blog_post = BlogPost.create!(
+    blogger_id: rand(1..3),
+    title: Faker::Lorem.sentence(rand(5..8)).chomp('.'),
+    body: Faker::Lorem.paragraphs(rand(7..12)).join('<br><br>'),
+    created_at: Faker::Time.between(2.months.ago, Time.now, :all)
+  )
+end
+
+#65.times do
+#  review = Review.create!(
+#       user_id: rand(1..155),
+#       recipe_id: rand(1..14),
+#       stars: rand(3..5),
+#       body: Faker::Lorem.paragraphs(rand(1..3)).join('<br><br>'),
+#       created_at: Faker::Time.between(1.year.ago, Time.now, :all),
+#       approved: 1
+#  )
+#   
+#end
 
 #350.times do
 #   post = Post.create!(

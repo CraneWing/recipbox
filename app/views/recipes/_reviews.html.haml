@@ -16,11 +16,25 @@
       = link_to review.username, user_path(review.user)
     said:
     %br/
-    = truncate(strip_tags(review.body), omission: '...', separator: ' ', length: 85)
+    = truncate(strip_tags(review.body), omission: '...', separator: ' ', length: 65)
     = link_to '[more]', review_path(review.id)
     %br/
     %br/
   %p
     = link_to 'See All Reviews', recipe_reviews_path(@recipe.id)
+  - if user_signed_in?
+    %p Have you tried this recipe? Since you're logged in, you're welcome to write a review!
+  - else
+    %p
+      Have you tried this recipe? You need to
+      = link_to 'register', new_user_registration_path
+      or
+      = link_to 'login', new_user_session_path
+      if you want to write a review.
 - else
-  %p There are no reviews for this recipe yet. Have you tried this recipe and want to reivew it? Sign up or login and add your voice!
+  %p
+    There are no reviews for this recipe yet. Have you tried this recipe and want to reivew it?
+    = link_to 'Sign up', new_user_registration_path
+    or
+    = link_to 'login', new_user_session_path
+    and add your voice!

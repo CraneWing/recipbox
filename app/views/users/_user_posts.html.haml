@@ -1,5 +1,5 @@
 %h3 User Posts
-- if @posts.count > 0
+- if @posts
   %p
     %strong
       Number of posts:
@@ -10,14 +10,12 @@
 - else
   %p User has not submitted any posts yet.
 %h3 User Comments
-- if @comments.count > 0
+- if @comments
   %p
     %strong
       Number of comments:
     = @comments.count
   - @comments.each do |comment|
-    %p= link_to truncate(comment.body, omission: '...', separator: ' ', length: 65), '/posts/' + comment.post_id.to_s
-   
-    
+    %p= link_to truncate(comment.body, omission: '...', separator: ' ', length: 65), post_path(comment.post_id)
 - else
   %p User has not submitted any comments yet.

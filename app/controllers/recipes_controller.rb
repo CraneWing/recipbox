@@ -30,7 +30,7 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @categories = Category.joins(:category_recipes).where("category_recipes.recipe_id = ?", @recipe.id)
-    @reviews = Review.where(recipe_id: @recipe.id).limit(4)
+    @reviews = Review.where(recipe_id: @recipe.id).limit(3)
   end
   
   def create

@@ -20,5 +20,6 @@
       &mdash;
       = @review.username
     %br/
+    %br/
     %p
-      = link_to 'Back', recipe_path(@review.recipe_id)
+      = link_to 'Back', recipe_path(@review.recipe_id), class: 'btn btn-primary'

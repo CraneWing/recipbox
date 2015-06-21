@@ -1,0 +1,11 @@
+%h3 User Reviews
+- if @reviews.count != 0
+  - @reviews.each do |review|
+    %p
+      Review of
+      = link_to review.title, recipe_path(review.recipe_id)
+    %p
+      = link_to truncate(review.body, omission: '...', separator: ' ', length: 65), review_path(review)
+- else
+  %p
+    User has not submitted any reviews yet.

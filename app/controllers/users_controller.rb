@@ -9,8 +9,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @recipes = @user.recipes
-    @posts = @user.posts
-    @comments = @user.comments
+    @posts = @user.posts.limit(3)
+    @comments = @user.comments.limit(4)
+    @reviews = @user.reviews.limit(4)
     
     if URI(request.referer).path.include?("/posts/")
       render layout: 'forums'

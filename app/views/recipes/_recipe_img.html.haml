@@ -1,6 +1,17 @@
-- if @recipe.recipe_img.blank? || @recipe.recipe_img == "dinner-plate"
-  = image_tag "fallback/dinner-plate.png"
-- else
-  = image_tag @recipe.recipe_img.url(:medium)
-%br/
-%br/
+#recipe-image-area
+  %ul
+    %li
+      %a{:href => "#"}
+        %i.icon-twitter
+    %li
+      %a{:href => "#"}
+        %i.icon-facebook
+    %li
+      %a{:href => "#"}
+        %i.icon-pinterest
+  - if @recipe.recipe_img.blank? || @recipe.recipe_img == "dinner-plate"
+    = image_tag "fallback/dinner-plate.png"
+  - else
+    = image_tag @recipe.recipe_img.url(:medium)
+  %br/
+  %br/

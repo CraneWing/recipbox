@@ -1,0 +1,32 @@
+%h3= @blog_post.title
+- if @blog_post.blog_img
+  .post-full-img
+    = image_tag 'blogging/' + @blog_post.blog_img
+= @blog_post.body.html_safe
+%br/
+&mdash;
+Posted by
+%strong
+  = @blog_post.name
+at
+= local_time(@blog_post.created_at, '%e %B %Y, %l:%M %P')
+%br/
+%h4
+.comments
+  %p
+    %strong
+      = @blog_comments.count
+      comments
+  - @blog_comments.each do |bc|
+    = bc.body.html_safe
+    %br/
+    = link_to bc.username, user_path(bc.user_id)
+    at
+    = local_time(bc.created_at, '%e %B %Y, %l:%M %P')
+    %br/
+    %br/
+  - if user_signed_in?
+    %p You're logged in and can leave a comment.
+  - else
+    %p You must register or login to leave a comment.
+  = render 'blog_posts/form'

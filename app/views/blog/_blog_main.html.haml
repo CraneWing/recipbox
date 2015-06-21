@@ -1,0 +1,12 @@
+- @blog_posts.each do |blog_post|
+  %h3= blog_post.title
+  - if blog_post.blog_img
+    .blog-post-img
+      = image_tag 'blogging/' + blog_post.blog_img
+  = truncate(strip_tags(blog_post.body), omission: '...', separator: ' ', length: 250)
+  %br/
+  Posted
+  %em
+    = local_time(blog_post.created_at, '%e %B %Y, %l:%M %P')
+  %br/
+  = link_to '[read more]', blog_post_path(blog_post)
