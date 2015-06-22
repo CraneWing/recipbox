@@ -31,6 +31,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @categories = Category.joins(:category_recipes).where("category_recipes.recipe_id = ?", @recipe.id)
     @reviews = Review.where(recipe_id: @recipe.id).limit(3)
+    @review = Review.where(user_id: current_user.id).exists?
   end
   
   def create

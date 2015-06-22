@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+   before_action :authenticate_user!, except: [:index, :show]
+    
    def index
       @recipe = Recipe.find(params[:recipe_id])
       @reviews = Review.where(recipe_id: @recipe.id).order(created_at: :desc)

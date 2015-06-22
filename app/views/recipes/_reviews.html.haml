@@ -2,28 +2,34 @@
   Recipe Reviews
 - if @reviews.count != 0
   - @reviews.each do |review|
-    .stars
-      - i = 0
-      - while i < review.stars.to_i
-        = image_tag "star-full.png"
-        - i+=1
-      - j = 0
-      - open_star = 5 - review.stars.to_i
-      - while j < open_star
-        = image_tag "star-gray.png"
-        - j+=1
-    %strong
-      = link_to review.username, user_path(review.user)
-    said:
-    %br/
-    = truncate(strip_tags(review.body), omission: '...', separator: ' ', length: 65)
-    = link_to '[more]', review_path(review.id)
-    %br/
-    %br/
+    - if review.approved != 0
+      .stars
+        - i = 0
+        - while i < review.stars.to_i
+          = image_tag "star-full.png"
+          - i+=1
+        - j = 0
+        - open_star = 5 - review.stars.to_i
+        - while j < open_star
+          = image_tag "star-gray.png"
+          - j+=1
+      %strong
+        = link_to review.username, user_path(review.user)
+      said:
+      %br/
+      = truncate(strip_tags(review.body), omission: '...', separator: ' ', length: 65)
+      = link_to '[more]', review_path(review.id)
+      %br/
+      %br/
   %p
     = link_to 'See All Reviews', recipe_reviews_path(@recipe.id)
   - if user_signed_in?
-    %p Have you tried this recipe? Since you're logged in, you're welcome to write a review!
+    - if @review
+      %p You have already written a review of this recipe.
+    - else
+      %p
+        Have you tried this recipe? Since you're logged in, you're
+        = link_to 'welcome to write a review!', new_recipe_review_path(@recipe.id)
   - else
     %p
       Have you tried this recipe? You need to
@@ -32,9 +38,14 @@
       = link_to 'login', new_user_session_path
       if you want to write a review.
 - else
-  %p
-    There are no reviews for this recipe yet. Have you tried this recipe and want to reivew it?
-    = link_to 'Sign up', new_user_registration_path
-    or
-    = link_to 'login', new_user_session_path
-    and add your voice!
+  - if user_signed_in?
+    %p
+      Have you tried this recipe? Since you're logged in, you may
+      = link_to 'write a review.', new_recipe_review_path(@recipe.id)
+  - else
+    %p
+      There are no reviews yet. If you've tried this recipe, be the first to write one!
+      = link_to 'Sign up', new_user_registration_path
+      or
+      = link_to 'login', new_user_session_path
+      and add your voice!

@@ -11,5 +11,5 @@
                 - if user.avatar == 'avatar-default.jpg' || user.avatar.blank?
                   = image_tag "fallback/avatar-default.jpg"
                 - else
-                  = image_tag('avatar-test/' + user.avatar.to_s)
+                  = image_tag user.avatar.url(:thumb)
               %p.username-wrap= link_to user.username, user_path(user)

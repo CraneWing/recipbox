@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   
-  #mount_uploader :avatar, ImageUploader
+  mount_uploader :avatar, ImageUploader
   
   # coordinate info and crop avatar method for jCrop
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h

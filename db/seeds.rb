@@ -1,22 +1,22 @@
 require 'faker'
 
-130.times do
+60.times do
    blog_comment = BlogComment.create!(
       blog_post_id: rand(1..18),
-      user_id: rand(1..155),
+      user_id: rand(1..10),
       body: Faker::Lorem.paragraphs(rand(1..3)).join('<br><br>'),
       created_at: Faker::Time.between(2.months.ago, Time.now, :all)
    )
 end
 
-18.times do
-  blog_post = BlogPost.create!(
-    blogger_id: rand(1..3),
-    title: Faker::Lorem.sentence(rand(5..8)).chomp('.'),
-    body: Faker::Lorem.paragraphs(rand(7..12)).join('<br><br>'),
-    created_at: Faker::Time.between(2.months.ago, Time.now, :all)
-  )
-end
+#18.times do
+#  blog_post = BlogPost.create!(
+#    blogger_id: rand(1..3),
+#    title: Faker::Lorem.sentence(rand(5..8)).chomp('.'),
+#    body: Faker::Lorem.paragraphs(rand(7..12)).join('<br><br>'),
+#    created_at: Faker::Time.between(2.months.ago, Time.now, :all)
+#  )
+#end
 
 #65.times do
 #  review = Review.create!(
