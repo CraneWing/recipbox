@@ -5,11 +5,19 @@
       %a=link_to '[Home]', root_path
     %br/
     %p
-      %strong Welcome to our forum! Post questions to fellow cooks and food enthusiasts in the topic areas below. You may browse topics and posts, but if you want to add a post or reply, you must
-      = link_to 'register for an account', new_user_registration_path
-      %strong or
-      = link_to 'login', new_user_session_path
-      %strong if you're aleady a member.
+      %strong
+        Welcome to our forum! Post questions to fellow cooks and food enthusiasts in the topic areas below.
+        - if user_signed_in?
+          You are logged in as
+          %em
+            = current_user.username
+          and may add posts and comments.
+        - else 
+          You may browse topics and posts, but if you want to add a post or reply, you must
+          = link_to 'register for an account', new_user_registration_path
+          %strong or
+          = link_to 'login', new_user_session_path
+          %strong if you're aleady a member.
     
     %p
       We do have a few rules to keep this forum as a friendly place to truly exchange tips, ideas, experiences and suggestions:

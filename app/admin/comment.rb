@@ -7,7 +7,7 @@ ActiveAdmin.register Comment, as: "ForumComment" do
       column :post_id
       column :created_at
       column 'Actions' do |resource|
-         link_to 'Edit', edit_admin_forum_comments_path(resource)
+         link_to 'Edit', edit_admin_comments_path(resource)
       end
    end
   

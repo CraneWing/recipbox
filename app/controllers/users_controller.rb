@@ -28,6 +28,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     
     if @user.save
+       flash[:success] = 'You have been signed up for RecipeBox! Welcome!'
        redirect_to current_user
     else
       render 'new'

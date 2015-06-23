@@ -17,10 +17,15 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update, :delete]
   resources :forums, only: [:index]
   resources :comments, only: [:edit, :update, :delete]
-  resources :posts, only: [:create, :new, :show] do
+  resources :posts, only: [:edit, :update, :show] do
     resources :comments, only: [:create, :new, :show]
   end
   resources :topics, only: [:show]
+  
+  resources :topics do
+    resource :posts, only: [:create, :new]
+  end
+  
   resources :search, only: [:index]
   
   get 'blog' => 'blog#index'

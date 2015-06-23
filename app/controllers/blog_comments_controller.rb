@@ -1,13 +1,12 @@
 class BlogCommentsController < ApplicationController
   before_action :authenticate_user!
+  before_filter :set_blog_post, only: [:new, :create]
   
   def new
-    @blog_post = BlogPost.find(params[:blog_post_id])
     @blog_comment = @blog_post.blog_comments.build
   end
   
   def create
-      @blog_post = BlogPost.find(params[:blog_post_id])
       @blog_comment = @blog_post.blog_comments.create(blog_comment_params)
       @blog_comment.user_id = current_user.id
       if @blog_comment.save
@@ -19,6 +18,10 @@ class BlogCommentsController < ApplicationController
   end
   
   private
+    def set_blog_post
+      @blog_post = BlogPost.find(params[:blog_post_id])
+    end
+  
     def blog_comment_params
       params.require(:blog_comment).permit(:user_id, :blog_post_id, :body)
     end

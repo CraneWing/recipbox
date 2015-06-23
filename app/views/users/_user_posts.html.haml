@@ -1,5 +1,5 @@
 %h3 User Posts
-- if @posts
+- if @posts.count > 0
   %p
     %strong
       Number of posts:
@@ -10,7 +10,7 @@
 - else
   %p User has not submitted any posts yet.
 %h3 User Comments
-- if @comments
+- if @comments.count > 0
   %p
     %strong
       Number of comments:

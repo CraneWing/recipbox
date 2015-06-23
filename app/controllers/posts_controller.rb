@@ -3,16 +3,15 @@ class PostsController < ApplicationController
    require 'will_paginate/array'
    layout 'forums'
    before_action :authenticate_user!, except: [:show]
+   before_filter :find_topic, only: [:create, :new, :edit, :update]
    
    def new
-      @topic = Topic.find(params[:topic_id])
       @post = @topic.posts.build
    end
    
    def create
-      @topic = Topic.find(params[:topic_id])
       @post = @topic.posts.create(post_params)
-      @post.user_id = current_user.id
+      current_user.posts << @post
       
       if @post.save
          flash[:success] = 'Post was successfully added'
@@ -25,11 +24,15 @@ class PostsController < ApplicationController
    
    def show
       @post = Post.find(params[:id])
-      @comments = Comment.where("post_id = ?", @post.id).order('created_at asc')
+      @comments = Comment.where(post_id: @post.id).order('created_at asc')
    end
    
    private
       def post_params
          params.require(:post).permit(:user_id, :topic_id, :title, :body)
+      end
+      
+      def set_topic
+         @topic = Topic.find(params[:topic_id])
       end
 end

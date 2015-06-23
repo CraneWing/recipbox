@@ -1,0 +1,25 @@
+= simple_form_for(@user, html: { method: :put, class: 'forms', multipart: true }) do |f|
+  = f.error_notification
+  .form-group
+    - if @user.avatar.blank? || @user.avatar == 'avatar-default'
+      = image_tag "fallback/avatar-default.jpg"
+    - else
+      = image_tag @user.avatar.url(:thumb)
+    %p
+      %strong Current Avatar
+    %p
+      %strong Change:
+    %br/
+    = f.file_field :avatar
+  .form-group
+    = f.input :username
+  .form-group
+    = f.input :first_name
+  .form-group
+    = f.input :last_name
+  .form-group
+    = f.input :location, placeholder: 'Enter city, state, province, country, etc.'
+  .form-group
+    = f.input :profile, placeholder: 'Tell us a little about yourself', input_html: { :rows => 8 }
+  .form-group
+    = f.button :submit, "Update", class: 'btn btn-primary'   

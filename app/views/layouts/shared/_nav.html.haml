@@ -1,5 +1,8 @@
 %nav.navbar.navbar-fixed-top
   .container
+    - if user_signed_in?
+      %p#username
+        Welcome, #{current_user.username}!
     .navbar-header
       %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
         %span.sr-only Toggle navigation
@@ -32,7 +35,9 @@
               %li= link_to 'Edit Sign-In', edit_user_registration_path
               %li= link_to 'Edit Profile', edit_user_path(current_user)
               %li= link_to 'Add Recipe', new_recipe_path
-            %li= link_to '<i class="icon-icecreamcone"></i> Logout'.html_safe, destroy_user_session_path, :method => :delete
+            %li#username
+              %li= link_to '<i class="icon-icecreamcone"></i> Logout'.html_safe, destroy_user_session_path, method: :delete
         - else
           %li= link_to '<i class="icon-pear"></i> Sign Up'.html_safe, new_user_registration_path
           %li= link_to '<i class="icon-beverage"></i> Login'.html_safe, new_user_session_path
+
