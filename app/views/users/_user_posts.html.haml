@@ -2,8 +2,7 @@
 - if @posts.count > 0
   %p
     %strong
-      Number of posts:
-    = @posts.count
+      = pluralize(@posts.count, 'post')
   - @posts.each do |post|
     %p= link_to post.title, post_path(post)
     %p= truncate(post.body, omission: '...', separator: ' ', length: 65)
@@ -13,7 +12,7 @@
 - if @comments.count > 0
   %p
     %strong
-      Number of comments:
+      = pluralize(@comments.count, 'comment')
     = @comments.count
   - @comments.each do |comment|
     %p= link_to truncate(comment.body, omission: '...', separator: ' ', length: 65), post_path(comment.post_id)

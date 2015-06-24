@@ -16,7 +16,7 @@
       %tr
         %td.col-md-3.info.post-col-left
           %strong
-            = link_to @post.username, '/users/' + @post.user_id.to_s
+            = link_to @post.username, user_path(@post.user_id)
           %br/
           - if @post.avatar == "avatar-default.jpg" || @post.avatar.blank?
             = image_tag "fallback/avatar-default.jpg", class: 'microthumb'

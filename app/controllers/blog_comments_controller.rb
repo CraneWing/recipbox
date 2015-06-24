@@ -9,6 +9,7 @@ class BlogCommentsController < ApplicationController
   def create
       @blog_comment = @blog_post.blog_comments.create(blog_comment_params)
       @blog_comment.user_id = current_user.id
+      
       if @blog_comment.save
         flash[:success] = 'Comment was successfully added'
         redirect_to blog_post_path(@blog_post.id)

@@ -20,7 +20,7 @@
                 %td
                   %h5
                     = link_to post.title, post_path(post)
-                  = truncate(strip_tags(post.body).html_safe, omission: '...', separator: ' ', length: 120)
+                  = truncate(strip_tags(post.body), omission: '...', separator: ' ', length: 120)
                   %br/
                   %p
                     By

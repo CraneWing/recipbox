@@ -15,8 +15,7 @@ at
 .comments
   %p
     %strong
-      = @blog_comments.count
-      comments
+      = pluralize(@blog_comments.count, 'comment')
   - @blog_comments.each do |bc|
     = bc.body.html_safe
     %br/

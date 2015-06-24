@@ -3,7 +3,7 @@ class PostsController < ApplicationController
    require 'will_paginate/array'
    layout 'forums'
    before_action :authenticate_user!, except: [:show]
-   before_filter :find_topic, only: [:create, :new, :edit, :update]
+   before_filter :set_topic, only: [:create, :new, :edit, :update]
    
    def new
       @post = @topic.posts.build
@@ -11,7 +11,7 @@ class PostsController < ApplicationController
    
    def create
       @post = @topic.posts.create(post_params)
-      current_user.posts << @post
+      @post.user_id = current_user.id
       
       if @post.save
          flash[:success] = 'Post was successfully added'

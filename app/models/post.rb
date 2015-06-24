@@ -9,5 +9,4 @@ class Post < ActiveRecord::Base
    end
    
    delegate :username, :avatar, :location, to: :user
-   delegate :topic_id, to: :topic
 end
