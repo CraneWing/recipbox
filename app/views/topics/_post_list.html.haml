@@ -1,0 +1,22 @@
+.panel.panel-default
+  .panel-heading
+    %h2= @topic.title
+  .panel-body
+    - if @posts.count != 0
+      %table.table
+        - @posts.each do |post|
+          %tr
+            %td
+              %h5= link_to post.title, post_path(post)
+              = truncate(strip_tags(post.body), omission: '...', separator: ' ', length: 120)
+              %br/
+              %p
+                By
+                %strong= post.username
+                at
+                = local_time(post.created_at, '%d %B %Y, %l:%M %P')
+            = will_paginate @posts
+    - else
+      %p
+        There are no posts in this category yet.
+    = link_to 'New Post', new_topic_posts_path(@topic), class: 'btn btn-info pull-right'

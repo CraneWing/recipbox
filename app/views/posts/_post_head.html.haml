@@ -1,0 +1,26 @@
+%tr
+  %td.col-md-3.info.post-col-left
+    %strong
+      = link_to @post.username, user_path(@post.user_id)
+    %br/
+    - if @post.avatar == "avatar-default.jpg" || @post.avatar.blank?
+      = image_tag "fallback/avatar-default.jpg", class: 'microthumb'
+    - else
+      = image_tag @post.avatar.url(:thumb), class: 'microthumb'
+    %br/
+    %span
+      %strong
+        Joined
+      %br/
+      = local_time(@post.created_at, '%e %B %Y')
+      %br/
+      %strong
+        Location:
+      %br/
+      = @post.user.location
+  %td.col-md-9.post-col-right
+    %h5= @post.title
+    %p
+      = emojify(@post.body.html_safe)
+    %em
+      = local_time(@post.created_at, '%e %B %Y, %l:%M %P')

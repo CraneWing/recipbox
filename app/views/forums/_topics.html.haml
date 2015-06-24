@@ -1,0 +1,5 @@
+- @topics.each do |topic|
+  .panel-heading
+    = link_to topic.title, topic_path(topic)
+  .panel-body
+    = topic.description

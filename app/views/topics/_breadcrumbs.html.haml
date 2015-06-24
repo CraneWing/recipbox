@@ -1,0 +1,8 @@
+%ol.breadcrumb.pull-right
+  %li
+    = link_to 'Home', root_path
+  %li
+    = link_to 'Forum', forums_path
+  %li= @topic.title
+.clearfix
+= forum_signed_in
