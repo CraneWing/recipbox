@@ -21,6 +21,11 @@
   %td.col-md-9.post-col-right
     %h5= @post.title
     %p
-      = emojify(@post.body.html_safe)
+      - if user_signed_in? && @post.user_id == current_user.id && @post.created_at < 48.hours.ago
+        %p
+          This is your post, and you have
+          = (Time.now - @post.created_at)
+          hours left to edit.
+      = emojify(@post.body.html_safe) 
     %em
       = local_time(@post.created_at, '%e %B %Y, %l:%M %P')

@@ -16,7 +16,7 @@ gem 'devise'
 # for admin - written this way to properly install with Rails 4
 gem 'activeadmin', github: 'activeadmin'
 
-# styling and formatting helper gems
+# styling and formatting gems
 gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'google-webfonts'

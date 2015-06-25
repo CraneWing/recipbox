@@ -2,8 +2,9 @@ class PostsController < ApplicationController
    include EmojiHelper
    require 'will_paginate/array'
    layout 'forums'
+   respond_to :html, :json
    before_action :authenticate_user!, except: [:show]
-   before_filter :set_topic, only: [:create, :new, :edit, :update]
+   before_filter :set_topic, only: [:create, :new]
    
    def new
       @post = @topic.posts.build
@@ -25,6 +26,24 @@ class PostsController < ApplicationController
    def show
       @post = Post.find(params[:id])
       @comments = Comment.where(post_id: @post.id).order('created_at asc')
+   end
+   
+   def edit
+     @post = Post.find(params[:id])
+   end
+   
+   def update
+    @post = Post.find(params[:id])
+  
+    respond_to do |format|
+      if @post.update_attributes(post_params)
+        format.html { redirect_to(@post, :success => 'Post has been updated') }
+        format.json { respond_with_bip(@post) }
+      else
+        format.html { render :action => "show" }
+        format.json { respond_with_bip(@post) }
+      end
+    end
    end
    
    private
