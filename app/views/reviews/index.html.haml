@@ -7,15 +7,7 @@
     - if @reviews
       - @reviews.each do |review|
         .stars
-          - i = 0
-          - while i < review.stars.to_i
-            = image_tag "star-full.png"
-            - i+=1
-          - j = 0
-          - open_star = 5 - review.stars.to_i
-          - while j < open_star
-            = image_tag "star-gray.png"
-            - j+=1
+          = build_stars(review.stars)
         %strong
           = link_to review.username, user_path(review.user)
           said:

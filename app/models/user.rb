@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
     
   validates :username, uniqueness: true, if: -> { self.username.present? }
   validates :username, presence: true,
-      length: {maximum: 191},
+      length: { maximum: 15 },
       format: { with: /\A[a-zA-Z0-9\-\.\_]*\z/,
       message: "Only letters, numbers, dot(.), dash(-) and underscore(_) allowed." }
       

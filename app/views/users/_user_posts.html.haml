@@ -5,7 +5,7 @@
       = pluralize(@posts.count, 'post')
   - @posts.each do |post|
     %p= link_to post.title, post_path(post)
-    %p= truncate(post.body, omission: '...', separator: ' ', length: 65)
+    %p= truncate(strip_tags(post.body), omission: '...', separator: ' ', length: 65)
 - else
   %p User has not submitted any posts yet.
 %h3 User Comments

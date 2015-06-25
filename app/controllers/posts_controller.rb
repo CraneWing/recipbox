@@ -25,6 +25,8 @@ class PostsController < ApplicationController
    
    def show
       @post = Post.find(params[:id])
+      @post_count = Post.count(user_id: @post.user_id)
+      @post_edit_expire = @post.created_at + 48.hours
       @comments = Comment.where(post_id: @post.id).order('created_at asc')
    end
    
