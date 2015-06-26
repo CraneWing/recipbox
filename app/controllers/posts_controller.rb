@@ -5,6 +5,7 @@ class PostsController < ApplicationController
    respond_to :html, :json
    before_action :authenticate_user!, except: [:show]
    before_filter :set_topic, only: [:create, :new]
+   before_filter :set_post, only: [:edit, :update]
    
    def new
       @post = @topic.posts.build
@@ -31,16 +32,13 @@ class PostsController < ApplicationController
    end
    
    def edit
-     @post = Post.find(params[:id])
    end
    
    def update
-    @post = Post.find(params[:id])
   
     respond_to do |format|
       if @post.update_attributes(post_params)
-        flash[:success] = 'Your post has been updated'
-        format.html { redirect_to(@post) }
+        format.html { redirect_to(@post, success: 'Your post has been updated') }
         format.json { respond_with_bip(@post) }
       else
         format.html { render :action => "show" }
@@ -52,6 +50,10 @@ class PostsController < ApplicationController
    private
       def post_params
          params.require(:post).permit(:user_id, :topic_id, :title, :body)
+      end
+      
+      def set_post
+         @post = Post.find(params[:id])
       end
       
       def set_topic

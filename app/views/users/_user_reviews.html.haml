@@ -1,5 +1,7 @@
 %h3 User Reviews
 - if @reviews.count != 0
+  %p
+    %strong= pluralize(@user.reviews_count, 'review')
   - @reviews.each do |review|
     %p
       Review of

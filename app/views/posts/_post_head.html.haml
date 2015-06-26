@@ -1,7 +1,7 @@
 %tr
   %td.col-md-3.info.post-col-left
     %strong
-      = link_to @post.username, user_path(@post.user_id)
+      = link_to @post.username, user_path(@post.user_id), action: :uri_from_posts
     %br/
     - if @post.avatar == "avatar-default.jpg" || @post.avatar.blank?
       = image_tag "fallback/avatar-default.jpg", class: 'microthumb'
@@ -21,17 +21,19 @@
       %br/
       %strong
         Posts:
-      = @post_count 
+      = @post.posts_count
+      %br/
+      %strong
+        = post_level(@post.posts_count)
   %td.col-md-9.post-col-right
     - if user_signed_in? && @post.user_id == current_user.id && @post.created_at < @post_edit_expire
-      = time_compare(@post.created_at, @post_edit_expire)
-      %h5
-        = best_in_place @post, :title, as: :input
-      = best_in_place @post, :body, as: :textarea, sanitize: false, display_with: lambda { |v| v.html_safe }
+      = time_compare(@post.created_at, @post_edit_expire, 'post', 'title or body')
+      %h5= best_in_place @post, :title, as: :input
+      = best_in_place @post, :body, as: :textarea, sanitize: false, display_with: lambda { |v| emojify(v.html_safe) }
     - else
-      = @post.title
+      %h5= @post.title
       = emojify(@post.body.html_safe)
-    %em
-      = local_time(@post.created_at, '%e %B %Y, %l:%M %P')
+    %em= local_time(@post.created_at, '%e %B %Y, %l:%M %P')
+    %br/
     %p
       = pluralize(@post.comments_count, 'comment')

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  require 'uri'
   # for devise
   before_filter :authenticate_user!, only: [:edit, :update]
   
@@ -13,7 +14,7 @@ class UsersController < ApplicationController
     @comments = @user.comments.limit(4)
     @reviews = @user.reviews.limit(4)
     
-    if URI(request.referer).path.include?("/posts/")
+    if Rails.application.routes.recognize_path(request.referer)[:controller] = 'posts'
       render layout: 'forums'
     else
       render layout: 'application'

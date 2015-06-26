@@ -1,6 +1,6 @@
 module ApplicationHelper
    
-   # display custom page titles (from David Lesches on Rails blog)
+   # display custom page titles - from David Lesches on Rails blog
    def title(title = nil)
       if title.present?
          content_for :title, title
@@ -20,7 +20,7 @@ module ApplicationHelper
      ) if time
    end
    
-    # bootstrap classes to flash alerts
+    # bootstrap classes to flash alerts - from Mark Berry via Stack Overflow
    def flash_class(level)
       case level
          when :notice then 'alert alert-info'
@@ -36,6 +36,22 @@ module ApplicationHelper
          render 'layouts/forums_shared/logged_in'
       else
          render 'layouts/forums_shared/not_logged'
+      end
+   end
+   
+   # shows user level in the forum based on number of posts
+   def post_level(count)
+      case count
+      when (0..30)
+         return 'Apprentice'
+      when (31..75)
+         return 'Junior Cook'
+      when (76..125)
+         return 'Chef'
+      when (125..250)
+         return 'Sous Chef'
+      when count > 251
+         return 'Executive Chef'
       end
    end
    
@@ -57,19 +73,10 @@ module ApplicationHelper
    end
    
    # returns number of hours and minutes left user has to edit post or comment
-   def time_compare(create_time, expire_time)
+   def time_compare(create_time, expire_time, item, item_elem)
       time_left = expire_time - Time.now
       hours = ((time_left)/3600).to_i
       minutes = minutes = (time_left/60 - hours * 60).to_i
-      return "<p><strong>This is your post, and you have #{hours} hours, #{minutes} minutes left if you want to edit it. Just click on the title or body, and you can change it right here! HTML tags and emoji are permitted.</strong></p>".html_safe
+      return "<p><strong>This is your #{item}, and you have #{hours} hours, #{minutes} minutes left if you want to edit it. Just click on the #{item_elem}, and you can change it right here! Basic HTML tags and emoji are permitted.</strong></p>".html_safe
    end 
-   
-   # display star icons on recipe reviews
-   def show_stars(star_total)
-      star_line = ''
-      star_total.to_i.times { star_line += '<%= img_tag "star-full.png" %> '}
-      star_open = 5 - star_total.to_i
-      star_open.times { star_line += '<%= img_tag "star-open.png" %> '}
-      star_line.html_safe
-   end   
 end

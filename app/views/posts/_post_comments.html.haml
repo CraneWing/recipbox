@@ -19,11 +19,21 @@
               Location:
             %br/
             = comment.location
+            %br/
+            %strong
+              Posts:
+            = comment.posts_count
+            %br/
+            %strong
+              = post_level(comment.posts_count)
       %td.col-md-9.post-col-right
-        = emojify(comment.body.html_safe)
+        - if user_signed_in? && comment.user_id == current_user.id && comment.created_at < comment.created_at + 48.hours
+          = time_compare(comment.created_at, comment.created_at + 48.hours, 'comment', 'body')
+          = best_in_place comment, :body, as: :textarea, sanitize: false, display_with: lambda { |v| emojify(v.html_safe) }
+        - else
+          = emojify(comment.body.html_safe)
         %br/
-        %em
-        = local_time(comment.created_at, '%e %B %Y, %l:%M %P')
+        %em= local_time(comment.created_at, '%e %B %Y, %l:%M %P')
     %tr
       %td.col-md-3
       %td.col-md-9

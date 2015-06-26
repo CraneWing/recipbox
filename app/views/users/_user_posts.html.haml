@@ -1,20 +1,19 @@
 %h3 User Posts
-- if @posts.count > 0
+- if @user.posts_count > 0
   %p
     %strong
-      = pluralize(@posts.count, 'post')
+      = pluralize(@user.posts_count, 'post')
   - @posts.each do |post|
     %p= link_to post.title, post_path(post)
     %p= truncate(strip_tags(post.body), omission: '...', separator: ' ', length: 65)
 - else
   %p User has not submitted any posts yet.
 %h3 User Comments
-- if @comments.count > 0
+- if @user.comments_count > 0
   %p
     %strong
-      = pluralize(@comments.count, 'comment')
-    = @comments.count
+      = pluralize(@user.comments_count, 'comment')
   - @comments.each do |comment|
-    %p= link_to truncate(comment.body, omission: '...', separator: ' ', length: 65), post_path(comment.post_id)
+    %p= link_to truncate(strip_tags(comment.body), omission: '...', separator: ' ', length: 65), post_path(comment.post_id)
 - else
   %p User has not submitted any comments yet.

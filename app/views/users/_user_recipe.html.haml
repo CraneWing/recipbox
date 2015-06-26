@@ -1,9 +1,10 @@
 %p
   %strong
-    Recipes submitted
+    Recipes
   - if @recipes.blank?
     %p User has not submitted any recipes yet.
   - else
+    %p= pluralize(@user.recipes_count, 'recipe')
     %ul
       - @recipes.each do |recipe|
         %li
