@@ -39,7 +39,8 @@ class PostsController < ApplicationController
   
     respond_to do |format|
       if @post.update_attributes(post_params)
-        format.html { redirect_to(@post, :success => 'Post has been updated') }
+        flash[:success] = 'Your post has been updated'
+        format.html { redirect_to(@post) }
         format.json { respond_with_bip(@post) }
       else
         format.html { render :action => "show" }

@@ -62,6 +62,9 @@ GEM
       json
     bcrypt (3.1.10)
     bcrypt (3.1.10-x86-mingw32)
+    best_in_place (3.0.3)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -268,6 +271,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  best_in_place
   better_errors
   bootstrap-sass
   bootstrap-will_paginate (~> 0.0.1)

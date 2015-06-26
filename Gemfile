@@ -23,6 +23,7 @@ gem 'google-webfonts'
 gem 'font-awesome-rails'
 gem 'rails-jasny-bootstrap-extension'
 gem 'bootstrap-will_paginate', '~> 0.0.1'
+gem 'best_in_place'
 
 # forum add-ons
 gem 'bootsy'

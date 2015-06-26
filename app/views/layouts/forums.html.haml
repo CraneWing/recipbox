@@ -13,4 +13,8 @@
     .container#forum-body
     = render 'layouts/shared/messages'  
     = yield
+    :javascript
+      $(document).ready(function() {
+        $('.best_in_place').best_in_place();
+      }); 
   
