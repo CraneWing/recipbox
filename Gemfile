@@ -10,8 +10,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'coffee-rails', '~> 4.1.0'
 
-# login, reg, authentication
+# authentication and authorization
 gem 'devise'
+gem 'pundit'
 
 # for admin - written this way to properly install with Rails 4
 gem 'activeadmin', github: 'activeadmin'
@@ -27,7 +28,7 @@ gem 'best_in_place'
 # allow PDF creation of recipes for use later
 gem 'wicked_pdf'
 
-# forum add-ons
+# forum add-ons - formatted forms and emoji support
 gem 'bootsy'
 gem 'gemoji-parser'
 gem 'gemoji'

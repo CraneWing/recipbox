@@ -43,7 +43,6 @@ class RecipesController < ApplicationController
       format.pdf do
         render pdf: 'recipes',
         template: 'recipes/show.pdf.haml',
-        layout: 'layouts/pdf_template.pdf.haml',
         page_size: 'Letter',
         locals: { recipe: @recipe }
       end
