@@ -88,7 +88,7 @@ body {
   
   .jumbotron {
     
-    height: 400px !important;
+    height: 350px !important;
     /* this is the default background image. when a link is
      * clicked, jQuery in the footer overrides it and inserts a
      * random image. if a page is refreshed, this image will load
@@ -101,7 +101,7 @@ body {
         opacity: 0.8;
         height: 300px;
         width: 300px;
-        margin: 15px auto 0 auto;
+        margin: -15px auto 0 auto;
         text-align: center;
         border-radius: 50%;
         

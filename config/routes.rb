@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  post '/rate' => 'rater#create', :as => 'rate'
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   devise_for :admins, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -14,7 +13,7 @@ Rails.application.routes.draw do
   end
   resources :reviews, only: [:show]
   resources :categories, only: [:show]
-  resources :users, only: [:index, :show, :edit, :update, :delete]
+  resources :users
   resources :forums, only: [:index]
   resources :comments, only: [:edit, :update, :delete]
   resources :posts, only: [:edit, :update, :show] do

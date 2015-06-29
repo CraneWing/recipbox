@@ -31,7 +31,23 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @categories = Category.joins(:category_recipes).where("category_recipes.recipe_id = ?", @recipe.id)
     @reviews = Review.where(recipe_id: @recipe.id).limit(3)
-    @review = Review.where(user_id: current_user.id).exists?
+    
+    # used to show user if they did a review on this recipe or not
+    if user_signed_in?
+      @review = Review.where(user_id: current_user.id).exists?
+    end
+    
+    # makes PDF of the recipe with wicked_pdf
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: 'recipes',
+        template: 'recipes/show.pdf.haml',
+        layout: 'layouts/pdf_template.pdf.haml',
+        page_size: 'Letter',
+        locals: { recipe: @recipe }
+      end
+    end
   end
   
   def create

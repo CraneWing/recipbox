@@ -3,12 +3,12 @@ capybara-*.html
 .rspec
 /log
 /tmp
-/db/
 /db/migrate
 /public/system
 /coverage/
 /spec/tmp
 /solr
+.env
 **.orig
 rerun.txt
 pickle-email-*.html

@@ -1,0 +1,40 @@
+.container
+  .row
+    .col-md-6
+      %h3= @recipe.title
+      %hr/
+      %p
+        Submitted by
+        \#{@recipe.username}
+      %p
+        = @recipe.comments
+      %hr/
+      %table.table.table-bordered.ingredients
+        %thead
+          %tr.active
+            %th Prep
+            %th Cook
+            %th Yield
+        %tbody
+          %tr
+            %td
+              = @recipe.prep
+            %td
+              = @recipe.cook
+            %td
+              = @recipe.yield
+      %p.small-subhead
+        Ingredients
+      %p
+        = split_ingredients(@recipe.ingredients)
+      %p.small-subhead
+        Preparation
+      = @recipe.steps.html_safe
+    .col-md-6
+      - if @recipe.recipe_img.blank? || @recipe.recipe_img == "dinner-plate"
+        = wicked_pdf_image_tag "fallback/dinner-plate.png", class: "pull-right"
+      - else
+        = wicked_pdf_image_tag @recipe.recipe_img.url(:medium), class: "pull-right"
+  %p
+    %strong
+      From RecipeBox, the Gathering Place for Food

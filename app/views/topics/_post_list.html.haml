@@ -1,7 +1,9 @@
 .panel.panel-default
   .panel-heading
     %h2= @topic.title
-    %p=@topic.posts_count
+    %h4.post-count
+      = @topic.posts_count
+      Posts
   .panel-body
     - if @posts.count != 0
       %table.table

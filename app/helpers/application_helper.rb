@@ -77,6 +77,10 @@ module ApplicationHelper
       time_left = expire_time - Time.now
       hours = ((time_left)/3600).to_i
       minutes = minutes = (time_left/60 - hours * 60).to_i
-      return "<p><strong>This is your #{item}, and you have #{hours} hours, #{minutes} minutes left if you want to edit it. Just click on the #{item_elem}, and you can change it right here! Basic HTML tags and emoji are permitted.</strong></p>".html_safe
+      if time_left > 0
+         return "<p><strong>This is your #{item}, and you have #{hours} hours, #{minutes} minutes left if you want to edit it. Just click on the #{item_elem}, and you can change it right here! Basic HTML tags and emoji are permitted.</strong></p>".html_safe
+      else
+         return "<p><strong>This is your #{item}, but your time period for editing it has expired.</strong></p>".html_safe
+      end
    end 
 end

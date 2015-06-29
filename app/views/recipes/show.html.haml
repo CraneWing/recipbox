@@ -10,3 +10,4 @@
     .clearfix
       %p#print-link
         = link_to 'Print Recipe', "#", onclick: "printPage()", class: "btn btn-default btn-sm"
+        = link_to 'Recipe PDF', recipe_path(@recipe, format: :pdf), target: "_blank", class: "btn btn-primary btn-sm" 

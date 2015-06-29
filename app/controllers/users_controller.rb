@@ -13,12 +13,6 @@ class UsersController < ApplicationController
     @posts = @user.posts.limit(3)
     @comments = @user.comments.limit(4)
     @reviews = @user.reviews.limit(4)
-    
-    if Rails.application.routes.recognize_path(request.referer)[:controller] = 'posts'
-      render layout: 'forums'
-    else
-      render layout: 'application'
-    end
   end
   
   def edit
@@ -55,6 +49,13 @@ class UsersController < ApplicationController
     end
   end
   
+  def generate_new_password_email
+      user = User.find(params[:user_id])
+      user.send_reset_password_instructions
+      flash[:notice] = "Reset password instructions have been sent to #{user.email}."
+      redirect_to admin_user_path(user)
+  end
+
   private
     def user_params
       params.require(:user).permit(:email, :password, :first_name, :last_name, :username, :location, :profile, :avatar, :crop_x, :crop_y, :crop_w, :crop_h)

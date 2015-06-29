@@ -1,0 +1,9 @@
+!!!
+%html
+  %head
+    %title Recipe File
+    %meta{charset: "utf-8"}/
+    = wicked_pdf_stylesheet_link_tag "pdf-pages", media: "all"
+    = csrf_meta_tags
+  %body
+    = yield

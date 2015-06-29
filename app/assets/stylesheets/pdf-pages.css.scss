@@ -1,0 +1,6 @@
+@import 'bootstrap';
+@include make-grid(md);
+
+.container {
+    width: 940px;
+}

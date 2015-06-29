@@ -24,6 +24,9 @@ gem 'rails-jasny-bootstrap-extension'
 gem 'bootstrap-will_paginate', '~> 0.0.1'
 gem 'best_in_place'
 
+# allow PDF creation of recipes for use later
+gem 'wicked_pdf'
+
 # forum add-ons
 gem 'bootsy'
 gem 'gemoji-parser'
@@ -49,5 +52,6 @@ group :development, :test do
   gem 'better_errors'
   gem 'faker'
   gem 'progress_bar'
+  gem 'foreman'
 end
 
