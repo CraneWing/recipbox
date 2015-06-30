@@ -3,7 +3,7 @@ class Comment < ActiveRecord::Base
    belongs_to :user, counter_cache: true
    
    validates_presence_of :body
-   delegate :username, :avatar, :location, :posts_count, to: :user
+   delegate :username, :avatar, :location, :posts_count, :role, to: :user
    
    searchable do
       text :body

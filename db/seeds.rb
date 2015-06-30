@@ -1,13 +1,13 @@
 require 'faker'
 
-60.times do
-   blog_comment = BlogComment.create!(
-      blog_post_id: rand(1..18),
-      user_id: rand(1..10),
-      body: Faker::Lorem.paragraphs(rand(1..3)).join('<br><br>'),
-      created_at: Faker::Time.between(2.months.ago, Time.now, :all)
-   )
-end
+#60.times do
+#   blog_comment = BlogComment.create!(
+#      blog_post_id: rand(1..18),
+#      user_id: rand(1..10),
+#      body: Faker::Lorem.paragraphs(rand(1..3)).join('<br><br>'),
+#      created_at: Faker::Time.between(2.months.ago, Time.now, :all)
+#   )
+#end
 
 #18.times do
 #  blog_post = BlogPost.create!(
@@ -30,25 +30,25 @@ end
 #   
 #end
 
-#350.times do
-#   post = Post.create!(
-#      topic_id: rand(1..9),
-#      user_id: rand(1..155),
-#      title: Faker::Lorem.sentence(rand(5..10)).chomp('.'),
-#      body: Faker::Lorem.paragraphs(rand(1..4)).join('<br><br>'),
-#      created_at: Faker::Time.between(1.year.ago, Time.now, :all)
-#   )
-#end
-#
-#
-#950.times do
-#   comment = Comment.create!(
-#      post_id: rand(1..350),
-#      user_id: rand(1..155),
-#      body: Faker::Lorem.paragraphs(rand(1..4)).join('<br><br>'),
-#      created_at: Faker::Time.between(1.year.ago, Time.now, :all)
-#   )
-#end
+150.times do
+   post = Post.create!(
+      topic_id: rand(2..10),
+      user_id: rand(1..8),
+      title: Faker::Lorem.sentence(rand(5..10)).chomp('.'),
+      body: Faker::Lorem.paragraphs(rand(1..4)).join('<br><br>'),
+      created_at: Faker::Time.between(1.year.ago, Time.now, :all)
+   )
+end
+
+
+300.times do
+   comment = Comment.create!(
+      post_id: rand(1..150),
+      user_id: rand(1..8),
+      body: Faker::Lorem.paragraphs(rand(1..4)).join('<br><br>'),
+      created_at: Faker::Time.between(1.year.ago, Time.now, :all)
+   )
+end
 
 #155.times do
 #  user = User.create!(

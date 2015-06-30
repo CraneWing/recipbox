@@ -8,25 +8,32 @@
     - else
       = image_tag @post.avatar.url(:thumb), class: 'microthumb'
     %br/
+    %br/
     %span
       %strong
-        Joined
-      %br/
+        Joined:
       = local_time(@post.created_at, '%e %B %Y')
       %br/
       %strong
         Location:
-      %br/
-      = @post.user.location
+      - if !@post.user.location.blank?
+        = @post.user.location
+      - else
+        Not Given
       %br/
       %strong
         Posts:
-      = @post.posts_count
+      = @post.user.posts_count
       %br/
-      %strong
-        = post_level(@post.posts_count)
+      - if @post.user.role == 1
+        %strong Moderator
+      - else
+        %strong
+          Level:
+        = post_level(@post.user.posts_count)
+      %br/
   %td.col-md-9.post-col-right
-    - if user_signed_in? && @post.user_id == current_user.id && @post.created_at < @post_edit_expire
+    - if user_signed_in? && @post.user_id == current_user.id && @post.user.role == 0 && @post.created_at < @post_edit_expire
       = time_compare(@post.created_at, @post_edit_expire, 'post', 'title or body')
       %h5= best_in_place @post, :title, as: :input
       = best_in_place @post, :body, as: :textarea, sanitize: false, display_with: lambda { |v| emojify(v.html_safe) }
@@ -36,4 +43,4 @@
     %em= local_time(@post.created_at, '%e %B %Y, %l:%M %P')
     %br/
     %p
-      = pluralize(@post.comments_count, 'comment')
+      %strong= pluralize(@post.comments_count, 'comment')

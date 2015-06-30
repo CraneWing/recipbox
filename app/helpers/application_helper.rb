@@ -48,7 +48,7 @@ module ApplicationHelper
          return 'Junior Cook'
       when (76..125)
          return 'Chef'
-      when (125..250)
+      when (126..250)
          return 'Sous Chef'
       when count > 251
          return 'Executive Chef'
