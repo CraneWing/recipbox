@@ -14,6 +14,9 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'devise'
 gem 'pundit'
 
+# dealing with join tables
+gem 'composite_primary_keys'
+
 # for admin - written this way to properly install with Rails 4
 gem 'activeadmin', github: 'activeadmin'
 

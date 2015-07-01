@@ -8,23 +8,4 @@
           = current_user.username
         and may add posts or comments.
     %h2= @topic.title
-    - @posts.each do |post|
-      post.title
-      post.body
-    .panel.panel-default
-      .panel-heading
-        %h2= @topic.title
-      .panel-body
-        %table.table
-          - @posts.each do |post|
-            %tr
-              %td
-                %h5
-                  %a= link_to post.title, post_path(post)
-                %p
-                  = truncate(post.body, omission: '...', separator: ' ', length: 70)
-                %p
-                  By
-                  %strong= post.user.username
-                  at
-                  = local_time(post.created_at, '%d %B %Y, %l:%M %P')
+    = render 'forums/posts'
